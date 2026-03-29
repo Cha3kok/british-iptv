@@ -1,65 +1,106 @@
-import Image from "next/image";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Features from "./components/Features";
+import Devices from "./components/Devices";
+import Setup from "./components/Setup";
+import Channels from "./components/Channels";
+import Pricing from "./components/Pricing";
+import Testimonials from "./components/Testimonials";
+import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
+import StickyBar from "./components/StickyBar";
+import JsonLd from "./components/JsonLd";
+import OfferBanner from "./components/OfferBanner";
+import SocialProof from "./components/SocialProof";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "BritishIPTV",
+  url: "https://iptv-british.com",
+  logo: "https://iptv-british.com/logo.png",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: "goldengateiptv@gmail.com",
+    availableLanguage: "English",
+  },
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "BritishIPTV Subscription",
+  description:
+    "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device.",
+  brand: { "@type": "Brand", name: "BritishIPTV" },
+  offers: [
+    { "@type": "Offer", name: "1 Month Plan", price: "15", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "3 Month Plan", price: "35", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "6 Month Plan", price: "45", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "12 Month Plan", price: "60", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+    { "@type": "Offer", name: "24 Month Plan", price: "110", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "2847",
+    bestRating: "5",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What devices does British IPTV work on?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our service works on Smart TVs, Amazon Firestick, Android TV boxes, Android phones, iPhones, iPads, MAG boxes, and any IPTV player.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer a free trial?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we offer a free 3-hour trial. No credit card required.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I watch UK channels from abroad?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Our service works worldwide. You can watch all UK channels no matter where you are — no VPN required.",
+      },
+    },
+  ],
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={productSchema} />
+      <JsonLd data={faqSchema} />
+      <OfferBanner />
+      <Navbar />
+      <Hero />
+      <Features />
+      <Pricing />
+      <Devices />
+      <Setup />
+      <Channels />
+      <Testimonials />
+      <FAQ />
+      <Footer />
+      <WhatsAppButton />
+      <StickyBar />
+      <SocialProof />
+    </>
   );
 }
