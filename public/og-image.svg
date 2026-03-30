@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Accent bar -->
+  <rect width="1200" height="8" fill="#fbbf24"/>
+
+  <!-- Logo/Icon area -->
+  <rect x="50" y="50" width="150" height="150" rx="12" fill="#111111" stroke="#fbbf24" stroke-width="4"/>
+  <rect x="90" y="90" width="70" height="70" rx="6" fill="#fbbf24" opacity="0.2"/>
+  <circle cx="125" cy="125" r="20" fill="#fbbf24"/>
+  <path d="M 110 110 L 110 140 L 140 125 Z" fill="#0a0a0a"/>
+
+  <!-- Main text -->
+  <text x="250" y="120" font-size="72" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">
+    BritishIPTV
+  </text>
+
+  <text x="250" y="180" font-size="48" fill="#fbbf24" font-family="Arial, sans-serif">
+    Premium IPTV Subscription
+  </text>
+
+  <!-- Features row -->
+  <text x="250" y="260" font-size="32" fill="#d4d4d8" font-family="Arial, sans-serif">
+    ✓ 50,000+ Live Channels
+  </text>
+
+  <text x="250" y="320" font-size="32" fill="#d4d4d8" font-family="Arial, sans-serif">
+    ✓ 4K Ultra HD Quality
+  </text>
+
+  <text x="250" y="380" font-size="32" fill="#d4d4d8" font-family="Arial, sans-serif">
+    ✓ 7-Day Catch-Up TV
+  </text>
+
+  <!-- CTA -->
+  <rect x="250" y="450" width="400" height="80" rx="12" fill="#fbbf24"/>
+  <text x="450" y="510" font-size="48" font-weight="bold" fill="#0a0a0a" font-family="Arial, sans-serif" text-anchor="middle">
+    Start Your Free Trial
+  </text>
+
+  <!-- Domain -->
+  <text x="1100" y="600" font-size="28" fill="#a1a1a1" font-family="Arial, sans-serif" text-anchor="end">
+    iptv-british.com
+  </text>
+</svg>

@@ -26,6 +26,7 @@ const catalogSchema = {
   name: "BritishIPTV Subscription",
   description:
     "Premium British IPTV subscription with 50,000+ live channels, 200,000+ VODs, 4K Ultra HD quality, 7-day catch-up TV, and 24/7 support.",
+  image: "https://iptv-british.com/og-image.svg",
   brand: { "@type": "Brand", name: "BritishIPTV" },
   offers: products.map((p) => ({
     "@type": "Offer",

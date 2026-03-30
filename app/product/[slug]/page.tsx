@@ -77,6 +77,7 @@ export default async function ProductPage({
     "@type": "Product",
     name: product.name,
     description: product.metaDescription,
+    image: "https://iptv-british.com/og-image.svg",
     brand: { "@type": "Brand", name: "BritishIPTV" },
     offers: {
       "@type": "Offer",

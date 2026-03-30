@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "BritishIPTV" }],
   creator: "BritishIPTV",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_GB",
@@ -44,7 +48,7 @@ export const metadata: Metadata = {
       "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device. Free 3-hour trial.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.svg",
         width: 1200,
         height: 630,
         alt: "BritishIPTV — Stream 50,000+ Channels in 4K",
@@ -56,7 +60,7 @@ export const metadata: Metadata = {
     title: "BritishIPTV — 50,000+ Channels in 4K",
     description:
       "Stream 50,000+ live UK and international channels in 4K Ultra HD. Free 3-hour trial.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
     creator: "@iptvbritish",
   },
   robots: {
