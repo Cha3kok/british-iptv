@@ -5,13 +5,14 @@ import { getAllPosts } from "../lib/mdx";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
+import JsonLd from "../components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
     "IPTV guides, tips, troubleshooting and comparisons. Learn how to get the most from your British IPTV subscription.",
   openGraph: {
-    title: "Blog — BritishIPTV",
+    title: "Blog — British IPTV",
     description: "IPTV guides, tips, troubleshooting and comparisons.",
     url: "https://iptv-british.com/blog",
   },
@@ -38,8 +39,45 @@ export default function BlogPage() {
   const posts = getAllPosts();
   const [featured, ...rest] = posts;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://iptv-british.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://iptv-british.com/blog",
+      },
+    ],
+  };
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "British IPTV Blog",
+    description:
+      "IPTV guides, tips, troubleshooting and comparisons. Learn how to get the most from your British IPTV subscription.",
+    url: "https://iptv-british.com/blog",
+    mainEntity: posts.map((post) => ({
+      "@type": "Article",
+      headline: post.title,
+      url: `https://iptv-british.com/blog/${post.slug}`,
+      datePublished: post.date,
+      description: post.excerpt,
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
+      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={collectionSchema} />
       <Navbar />
 
       {/* Header */}

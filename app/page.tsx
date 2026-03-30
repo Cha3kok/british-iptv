@@ -17,7 +17,7 @@ import SocialProof from "./components/SocialProof";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "BritishIPTV",
+  name: "British IPTV",
   url: "https://iptv-british.com",
   logo: "https://iptv-british.com/logo.png",
   contactPoint: {
@@ -31,23 +31,52 @@ const organizationSchema = {
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "BritishIPTV Subscription",
+  name: "British IPTV Subscription",
   description:
     "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device.",
-  brand: { "@type": "Brand", name: "BritishIPTV" },
-  offers: [
-    { "@type": "Offer", name: "1 Month Plan", price: "15", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
-    { "@type": "Offer", name: "3 Month Plan", price: "35", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
-    { "@type": "Offer", name: "6 Month Plan", price: "45", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
-    { "@type": "Offer", name: "12 Month Plan", price: "60", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
-    { "@type": "Offer", name: "24 Month Plan", price: "110", priceCurrency: "GBP", availability: "https://schema.org/InStock" },
-  ],
+  brand: { "@type": "Brand", name: "British IPTV" },
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "GBP",
+    offers: [
+      { "@type": "Offer", name: "1 Month Plan", price: "15", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "3 Month Plan", price: "35", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "6 Month Plan", price: "45", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "12 Month Plan", price: "60", availability: "https://schema.org/InStock" },
+      { "@type": "Offer", name: "24 Month Plan", price: "110", availability: "https://schema.org/InStock" },
+    ],
+  },
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "2847",
+    ratingValue: "4.6",
+    reviewCount: "89",
     bestRating: "5",
   },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://iptv-british.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Pricing",
+      item: "https://iptv-british.com#pricing",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Setup",
+      item: "https://iptv-british.com#setup",
+    },
+  ],
 };
 
 const faqSchema = {
@@ -86,6 +115,7 @@ export default function Home() {
     <>
       <JsonLd data={organizationSchema} />
       <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
       <OfferBanner />
       <Navbar />

@@ -39,7 +39,7 @@ export const products: Product[] = [
     price: 15,
     period: "one-off payment",
     highlight: false,
-    metaTitle: "1 Month British IPTV — £15 | 50,000+ Channels, 4K HD | BritishIPTV",
+    metaTitle: "1 Month British IPTV — £15 | 50,000+ Channels, 4K HD | British IPTV",
     metaDescription:
       "Get 1 month of British IPTV for just £15. 50,000+ live channels, 4K Ultra HD, 7-day catch-up, zero buffering. No contract. Instant activation. Free 3-hour trial available.",
     h1: "1 Month British IPTV — £15 One-Off Payment",
@@ -112,7 +112,7 @@ export const products: Product[] = [
     price: 35,
     period: "one-off payment",
     highlight: false,
-    metaTitle: "3 Months British IPTV — £35 | Save vs Monthly | BritishIPTV",
+    metaTitle: "3 Months British IPTV — £35 | Save vs Monthly | British IPTV",
     metaDescription:
       "3 months of British IPTV for £35 — that's under £12/month. 50,000+ channels, 4K Ultra HD, 7-day catch-up. No contract, instant activation. Try free for 3 hours.",
     h1: "3 Months British IPTV — £35 One-Off Payment",
@@ -182,7 +182,7 @@ export const products: Product[] = [
     period: "one-off payment",
     badge: "Most Popular",
     highlight: true,
-    metaTitle: "6 Months British IPTV — £45 | Most Popular Plan | BritishIPTV",
+    metaTitle: "6 Months British IPTV — £45 | Most Popular Plan | British IPTV",
     metaDescription:
       "6 months of British IPTV for just £45 — only £7.50/month. Most popular plan. 50,000+ channels, 4K Ultra HD, 7-day catch-up, anti-freeze technology. Instant setup.",
     h1: "6 Months British IPTV — £45 One-Off Payment",
@@ -255,7 +255,7 @@ export const products: Product[] = [
     price: 60,
     period: "one-off payment",
     highlight: false,
-    metaTitle: "12 Months British IPTV — £60 | Only £5/Month | BritishIPTV",
+    metaTitle: "12 Months British IPTV — £60 | Only £5/Month | British IPTV",
     metaDescription:
       "12 months of British IPTV for just £60 — that's £5 per month. Full year of 50,000+ channels, 4K streaming, 7-day catch-up. Best value for committed viewers. Instant setup.",
     h1: "12 Months British IPTV — £60 One-Off Payment",
@@ -329,7 +329,7 @@ export const products: Product[] = [
     period: "one-off payment",
     badge: "Best Value",
     highlight: false,
-    metaTitle: "24 Months British IPTV — £110 | Best Value | Only £4.58/Month | BritishIPTV",
+    metaTitle: "24 Months British IPTV — £110 | Best Value | Only £4.58/Month | British IPTV",
     metaDescription:
       "24 months of British IPTV for £110 — just £4.58/month. Best value plan. 50,000+ channels, 4K streaming, 7-day catch-up. Two full years with one payment. Instant setup.",
     h1: "24 Months British IPTV — £110 One-Off Payment",

@@ -7,10 +7,15 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import JsonLd from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About British IPTV — Premium UK IPTV Service Provider",
   description:
-    "Learn about BritishIPTV — who we are, our mission, and why thousands of UK households trust us for their IPTV service.",
+    "Discover British IPTV: trusted by 25,000+ subscribers. We deliver 50,000+ live channels, 4K streaming, and 99.9% uptime. Learn our mission and why UK families choose us.",
   alternates: { canonical: "https://iptv-british.com/about" },
+  openGraph: {
+    title: "About British IPTV — Premium UK IPTV Service",
+    description: "25,000+ subscribers trust us for 50,000+ live channels, 4K streaming, and exceptional support.",
+    url: "https://iptv-british.com/about",
+  },
 };
 
 const stats = [
@@ -23,10 +28,10 @@ const stats = [
 const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  name: "About BritishIPTV",
+  name: "About British IPTV",
   url: "https://iptv-british.com/about",
   description:
-    "BritishIPTV is a premium IPTV provider offering 50,000+ live channels in 4K quality.",
+    "British IPTV is a premium IPTV provider offering 50,000+ live channels in 4K quality.",
 };
 
 export default function AboutPage() {
@@ -48,7 +53,7 @@ export default function AboutPage() {
             Britain&apos;s most trusted IPTV provider
           </h1>
           <p className="text-zinc-400 text-lg leading-relaxed max-w-2xl">
-            We started BritishIPTV to give UK viewers a better, more affordable alternative to expensive satellite TV — and we&apos;ve been growing ever since.
+            We started British IPTV to give UK viewers a better, more affordable alternative to expensive satellite TV — and we&apos;ve been growing ever since.
           </p>
         </div>
       </div>
@@ -69,7 +74,7 @@ export default function AboutPage() {
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-white">Our Story</h2>
           <p className="text-zinc-300 leading-8">
-            BritishIPTV was founded with a simple mission: make great TV accessible and affordable for everyone. We watched as satellite TV prices climbed year after year while the value offered to viewers stayed flat. Long contracts, expensive hardware, and a limited channel selection — that wasn&apos;t good enough.
+            British IPTV was founded with a simple mission: make great TV accessible and affordable for everyone. We watched as satellite TV prices climbed year after year while the value offered to viewers stayed flat. Long contracts, expensive hardware, and a limited channel selection — that wasn&apos;t good enough.
           </p>
           <p className="text-zinc-300 leading-8">
             We built a service from the ground up with a focus on reliability, picture quality, and value. Starting with a small base of UK viewers, we&apos;ve grown to serve over 25,000 active subscribers across the UK and worldwide.

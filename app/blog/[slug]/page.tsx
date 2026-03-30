@@ -99,18 +99,56 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
+    image: "https://iptv-british.com/og-image.svg",
     datePublished: post.date,
-    author: { "@type": "Organization", name: "BritishIPTV" },
+    dateModified: post.date,
+    url: `https://iptv-british.com/blog/${post.slug}`,
+    author: {
+      "@type": "Organization",
+      name: "BritishIPTV",
+      url: "https://iptv-british.com",
+      logo: "https://iptv-british.com/logo.png",
+    },
     publisher: {
       "@type": "Organization",
       name: "BritishIPTV",
       url: "https://iptv-british.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://iptv-british.com/logo.png",
+      },
     },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://iptv-british.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://iptv-british.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://iptv-british.com/blog/${post.slug}`,
+      },
+    ],
   };
 
   return (
     <div className="min-h-screen bg-black text-white">
       <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Navbar />
 
       {/* Hero */}

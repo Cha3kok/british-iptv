@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Refund Policy",
-  description: "BritishIPTV refund policy — understand your rights and how to request a refund.",
+  title: "Refund Policy — British IPTV | Money-Back Guarantee",
+  description: "British IPTV refund policy: 48-hour money-back guarantee if service doesn't work as described. Check your refund rights and eligibility terms.",
   alternates: { canonical: "https://iptv-british.com/refund-policy" },
+  openGraph: {
+    title: "Refund Policy — British IPTV",
+    description: "48-hour refund guarantee if unsatisfied with service.",
+    url: "https://iptv-british.com/refund-policy",
+  },
 };
 
 export default function RefundPolicy() {

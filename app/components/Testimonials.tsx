@@ -7,7 +7,7 @@ const reviews = [
     avatar: "JT",
     rating: 5,
     title: "Finally switched from Sky — best decision ever",
-    body: "Paying £70/month for Sky was painful. I switched to BritishIPTV and I get more channels, better picture quality, and it costs me less than a tenner a month. Zero buffering in 6 months of use.",
+    body: "Paying £70/month for Sky was painful. I switched to British IPTV and I get more channels, better picture quality, and it costs me less than a tenner a month. Zero buffering in 6 months of use.",
     plan: "12-Month Plan",
   },
   {

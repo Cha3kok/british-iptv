@@ -17,8 +17,8 @@ const BASE_URL = "https://iptv-british.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "BritishIPTV — 50,000+ Channels in 4K",
-    template: "%s — BritishIPTV",
+    default: "British IPTV — 50,000+ Channels in 4K",
+    template: "%s — British IPTV",
   },
   description:
     "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device. Free 3-hour trial.",
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     "Sky Sports IPTV",
     "4K IPTV",
   ],
-  authors: [{ name: "BritishIPTV" }],
-  creator: "BritishIPTV",
+  authors: [{ name: "British IPTV" }],
+  creator: "British IPTV",
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     url: BASE_URL,
-    siteName: "BritishIPTV",
-    title: "BritishIPTV — 50,000+ Channels in 4K",
+    siteName: "British IPTV",
+    title: "British IPTV — 50,000+ Channels in 4K",
     description:
       "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device. Free 3-hour trial.",
     images: [
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "BritishIPTV — Stream 50,000+ Channels in 4K",
+        alt: "British IPTV — Stream 50,000+ Channels in 4K",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BritishIPTV — 50,000+ Channels in 4K",
+    title: "British IPTV — 50,000+ Channels in 4K",
     description:
       "Stream 50,000+ live UK and international channels in 4K Ultra HD. Free 3-hour trial.",
     images: ["/og-image.svg"],

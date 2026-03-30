@@ -44,7 +44,7 @@ export const posts: Post[] = [
       },
       {
         heading: "Our Recommendation",
-        body: "For most users, TiviMate Premium is the best overall experience. For first-time setup or those who prefer free options, IPTV Smarters Pro is excellent. Both work seamlessly with a BritishIPTV subscription — you'll have your channels loaded in minutes.",
+        body: "For most users, TiviMate Premium is the best overall experience. For first-time setup or those who prefer free options, IPTV Smarters Pro is excellent. Both work seamlessly with a British IPTV subscription — you'll have your channels loaded in minutes.",
       },
     ],
   },

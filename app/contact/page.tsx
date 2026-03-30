@@ -6,18 +6,23 @@ import Footer from "../components/Footer";
 import JsonLd from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact British IPTV Support — 24/7 WhatsApp & Email",
   description:
-    "Get in touch with BritishIPTV support. We're available 24/7 via WhatsApp and email to help with setup, billing, and technical issues.",
+    "Get instant help from British IPTV support. Available 24/7 via WhatsApp or email for setup, billing, and technical issues. Typical response: under 5 minutes.",
   alternates: { canonical: "https://iptv-british.com/contact" },
+  openGraph: {
+    title: "Contact British IPTV — 24/7 Support",
+    description: "Reach our support team instantly via WhatsApp or email.",
+    url: "https://iptv-british.com/contact",
+  },
 };
 
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact BritishIPTV",
+  name: "Contact British IPTV",
   url: "https://iptv-british.com/contact",
-  description: "Contact BritishIPTV support via WhatsApp or email.",
+  description: "Contact British IPTV support via WhatsApp or email.",
 };
 
 const channels = [
@@ -26,7 +31,7 @@ const channels = [
     title: "WhatsApp",
     description: "The fastest way to reach us. Get a response within minutes, day or night.",
     action: "Chat on WhatsApp",
-    href: "https://wa.me/212707711512?text=Hi%2C%20I%27d%20like%20some%20help%20with%20BritishIPTV",
+    href: "https://wa.me/212707711512?text=Hi%2C%20I%27d%20like%20some%20help%20with%20British%20IPTV",
     highlight: true,
     detail: "+212 707 711 512",
   },

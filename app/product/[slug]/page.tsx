@@ -78,7 +78,7 @@ export default async function ProductPage({
     name: product.name,
     description: product.metaDescription,
     image: "https://iptv-british.com/og-image.svg",
-    brand: { "@type": "Brand", name: "BritishIPTV" },
+    brand: { "@type": "Brand", name: "British IPTV" },
     offers: {
       "@type": "Offer",
       price: product.price.toString(),
@@ -88,8 +88,8 @@ export default async function ProductPage({
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "2847",
+      ratingValue: "4.6",
+      reviewCount: "89",
       bestRating: "5",
     },
   };

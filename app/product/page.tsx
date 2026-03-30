@@ -8,12 +8,12 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import { products } from "../lib/products";
 
 export const metadata: Metadata = {
-  title: "British IPTV Plans & Pricing — From £15 | BritishIPTV",
+  title: "British IPTV Plans & Pricing — From £15 | British IPTV",
   description:
     "Compare all British IPTV subscription plans from £15. 50,000+ channels, 4K Ultra HD, 7-day catch-up. Choose 1, 3, 6, 12, or 24 months. No contract. Instant activation.",
   alternates: { canonical: "https://iptv-british.com/product" },
   openGraph: {
-    title: "British IPTV Plans & Pricing — From £15 | BritishIPTV",
+    title: "British IPTV Plans & Pricing — From £15 | British IPTV",
     description:
       "50,000+ channels, 4K streaming, 7-day catch-up. Plans from £15. Compare 1, 3, 6, 12 and 24-month British IPTV subscriptions.",
     url: "https://iptv-british.com/product",
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 const catalogSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "BritishIPTV Subscription",
+  name: "British IPTV Subscription",
   description:
     "Premium British IPTV subscription with 50,000+ live channels, 200,000+ VODs, 4K Ultra HD quality, 7-day catch-up TV, and 24/7 support.",
   image: "https://iptv-british.com/og-image.svg",
-  brand: { "@type": "Brand", name: "BritishIPTV" },
+  brand: { "@type": "Brand", name: "British IPTV" },
   offers: products.map((p) => ({
     "@type": "Offer",
     name: p.name,
@@ -38,8 +38,8 @@ const catalogSchema = {
   })),
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "2847",
+    ratingValue: "4.6",
+    reviewCount: "89",
     bestRating: "5",
   },
 };
