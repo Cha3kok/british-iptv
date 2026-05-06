@@ -87,6 +87,38 @@ const mdxComponents = {
   code: (props: React.HTMLAttributes<HTMLElement>) => (
     <code className="bg-[#1a1a1a] text-amber-400 text-sm px-1.5 py-0.5 rounded font-mono" {...props} />
   ),
+  table: (props: React.HTMLAttributes<HTMLTableElement>) => (
+    <div className="overflow-x-auto my-8 rounded-xl border border-white/10">
+      <table className="w-full text-sm border-collapse" {...props} />
+    </div>
+  ),
+  thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <thead className="bg-white/5" {...props} />
+  ),
+  tbody: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <tbody {...props} />
+  ),
+  tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors" {...props} />
+  ),
+  th: (props: React.ThHTMLAttributes<HTMLTableCellElement>) => (
+    <th className="text-left py-3 px-4 text-amber-400 font-semibold text-sm whitespace-nowrap" {...props} />
+  ),
+  td: (props: React.TdHTMLAttributes<HTMLTableCellElement>) => (
+    <td className="py-3 px-4 text-zinc-300 text-sm" {...props} />
+  ),
+  CTA: ({ href, children }: { href: string; children: React.ReactNode }) => (
+    <div className="my-8 bg-gradient-to-br from-amber-950/40 to-zinc-900 border border-amber-900/30 rounded-2xl p-6 text-center">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block bg-amber-500 hover:bg-amber-400 text-white font-semibold px-8 py-3 rounded-full text-sm transition-colors"
+      >
+        {children}
+      </a>
+    </div>
+  ),
 };
 
 export default async function BlogPostPage({ params }: Props) {
