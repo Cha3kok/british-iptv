@@ -11,6 +11,8 @@ export type PostMeta = {
   category: string;
   date: string;
   readTime: string;
+  coverImage?: string;
+  coverAlt?: string;
 };
 
 export type PostWithContent = PostMeta & {
@@ -32,6 +34,8 @@ export function getAllPosts(): PostMeta[] {
         category: data.category as string,
         date: data.date as string,
         readTime: data.readTime as string,
+        coverImage: data.coverImage as string | undefined,
+        coverAlt: data.coverAlt as string | undefined,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -51,6 +55,8 @@ export function getPostBySlug(slug: string): PostWithContent | null {
     category: data.category as string,
     date: data.date as string,
     readTime: data.readTime as string,
+    coverImage: data.coverImage as string | undefined,
+    coverAlt: data.coverAlt as string | undefined,
     content,
   };
 }
