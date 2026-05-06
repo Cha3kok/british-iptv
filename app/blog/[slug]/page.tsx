@@ -9,6 +9,8 @@ import Footer from "../../components/Footer";
 import WhatsAppButton from "../../components/WhatsAppButton";
 import JsonLd from "../../components/JsonLd";
 
+export const dynamicParams = true;
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
