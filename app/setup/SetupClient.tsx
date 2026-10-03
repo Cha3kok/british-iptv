@@ -185,7 +185,7 @@ function StepItem({ step, index, total }: { step: Step; index: number; total: nu
   return (
     <div className="flex gap-4">
       <div className="flex flex-col items-center">
-        <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
           {index + 1}
         </div>
         {index < total - 1 && <div className="w-px flex-1 bg-white/10 mt-2" />}
@@ -208,9 +208,9 @@ export default function SetupClient() {
   const active = devices.find((d) => d.id === activeId)!;
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-ink-950 text-white">
       {/* Header */}
-      <div className="bg-[#0a0a0a] border-b border-white/5 pt-24 pb-12">
+      <div className="bg-ink-900 border-b border-white/5 pt-24 pb-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -218,7 +218,7 @@ export default function SetupClient() {
           >
             <ChevronLeft size={14} /> Back to Home
           </Link>
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">
+          <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">
             Setup Guide
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">
@@ -244,12 +244,12 @@ export default function SetupClient() {
                   onClick={() => setActiveId(d.id)}
                   className={`flex-shrink-0 text-left px-4 py-3 rounded-xl text-sm transition-all ${
                     activeId === d.id
-                      ? "bg-amber-500 text-white font-semibold"
-                      : "bg-[#111111] text-zinc-400 hover:text-white hover:bg-[#1a1a1a]"
+                      ? "bg-brand-500 text-white font-semibold"
+                      : "bg-ink-800 text-zinc-400 hover:text-white hover:bg-ink-700"
                   }`}
                 >
                   <span className="block font-medium">{d.name}</span>
-                  <span className={`text-xs ${activeId === d.id ? "text-amber-100" : "text-zinc-600"}`}>
+                  <span className={`text-xs ${activeId === d.id ? "text-brand-100" : "text-zinc-600"}`}>
                     {d.subtitle}
                   </span>
                 </button>
@@ -259,7 +259,7 @@ export default function SetupClient() {
 
           {/* Guide content */}
           <main className="flex-1 min-w-0">
-            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 sm:p-8">
+            <div className="bg-ink-800 border border-white/5 rounded-2xl p-6 sm:p-8">
               {/* Device header */}
               <div className="flex items-start justify-between gap-4 mb-8">
                 <div>
@@ -273,7 +273,7 @@ export default function SetupClient() {
               </div>
 
               {/* Recommended app */}
-              <div className="bg-[#1a1a1a] border border-white/5 rounded-xl p-4 flex items-center justify-between gap-4 mb-8">
+              <div className="bg-ink-700 border border-white/5 rounded-xl p-4 flex items-center justify-between gap-4 mb-8">
                 <div>
                   <p className="text-zinc-500 text-xs mb-0.5">Recommended App</p>
                   <p className="text-white font-semibold">{active.appName}</p>
@@ -283,7 +283,7 @@ export default function SetupClient() {
                     href={active.appUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors flex-shrink-0"
+                    className="flex items-center gap-1.5 text-brand-400 hover:text-brand-300 text-sm font-medium transition-colors flex-shrink-0"
                   >
                     Download <ExternalLink size={13} />
                   </a>
@@ -323,7 +323,7 @@ export default function SetupClient() {
             </div>
 
             {/* Still stuck CTA */}
-            <div className="mt-6 bg-[#111111] border border-white/5 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-6 bg-ink-800 border border-white/5 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="text-white font-semibold">Still need help?</p>
                 <p className="text-zinc-400 text-sm">Our team will set it up for you — free of charge.</p>

@@ -1,3 +1,5 @@
+import SectionHeader from "./SectionHeader";
+
 const devices = [
   {
     name: "Amazon Firestick",
@@ -32,7 +34,7 @@ const devices = [
     svg: (
       <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
         <rect x="10" y="20" width="44" height="28" rx="4" fill="#3DDC84" />
-        <rect x="14" y="24" width="36" height="20" rx="2" fill="#1a1a1a" />
+        <rect x="14" y="24" width="36" height="20" rx="2" fill="#0a1024" />
         <circle cx="20" cy="52" r="3" fill="#3DDC84" />
         <circle cx="32" cy="52" r="3" fill="#3DDC84" />
         <circle cx="44" cy="52" r="3" fill="#3DDC84" />
@@ -110,38 +112,38 @@ const devices = [
 
 export default function Devices() {
   return (
-    <section id="devices" className="bg-[#0a0a0a] py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Compatibility
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Works on every device you own
-          </h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-            One subscription, unlimited devices. Set up in minutes on any platform.
-          </p>
-        </div>
+    <section id="devices" className="relative overflow-hidden bg-ink-900 py-28">
+      <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Compatibility"
+          title={
+            <>
+              Works on <span className="text-gradient">every device</span> you own
+            </>
+          }
+          subtitle="One subscription, unlimited devices. Set up in minutes on any platform."
+        />
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
-          {devices.map((device) => (
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
+          {devices.map((device, i) => (
             <div
               key={device.name}
-              className="group bg-[#111111] hover:bg-[#1a1a1a] border border-white/5 hover:border-amber-500/30 rounded-2xl p-6 flex flex-col items-center text-center gap-3 transition-all duration-300"
+              className="reveal spotlight group flex flex-col items-center gap-4 rounded-3xl border border-white/[0.07] bg-ink-800/70 p-6 text-center backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:border-brand-500/40 hover:shadow-[0_20px_60px_-20px_rgba(76,111,255,0.45)]"
+              style={{ "--delay": `${i * 60}ms` } as React.CSSProperties}
             >
-              <div className="w-16 h-16 bg-[#1a1a1a] group-hover:bg-[#222222] rounded-2xl flex items-center justify-center transition-colors">
+              <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-white/5 bg-gradient-to-br from-ink-700 to-ink-900 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                 {device.svg}
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">{device.name}</p>
-                <p className="text-zinc-500 text-xs mt-0.5">{device.desc}</p>
+                <p className="text-sm font-semibold text-white">{device.name}</p>
+                <p className="mt-0.5 text-xs text-zinc-500">{device.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-zinc-500 text-sm mt-10">
+        <p className="reveal mt-12 text-center text-sm text-zinc-500">
           Compatible with TiviMate, IPTV Smarters Pro, GSE IPTV, Perfect Player, and all standard M3U players.
         </p>
       </div>

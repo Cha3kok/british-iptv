@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — British IPTV | IPTV Subscription Terms",
+  title: { absolute: "Terms of Service — British IPTV | IPTV Subscription Terms" },
   description: "Read British IPTV's terms and conditions. Understand your rights, responsibilities, and acceptable use policy for our IPTV streaming service.",
   alternates: { canonical: "https://iptv-british.com/terms-of-service" },
   openGraph: {

@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Sora } from "next/font/google";
 import "./globals.css";
+import Motion from "./components/Motion";
+
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,50 +24,40 @@ const BASE_URL = "https://iptv-british.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "British IPTV — 50,000+ Channels in 4K",
+    default: "IPTV UK – Best UK IPTV Subscription | British IPTV",
     template: "%s — British IPTV",
   },
   description:
-    "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device. Free 3-hour trial.",
+    "IPTV UK subscription with 50,000+ live channels and 200,000+ movies & series in 4K. Works on Firestick, Smart TV & phones. Free 3-hour trial.",
   keywords: [
-    "British IPTV",
+    "IPTV UK",
     "UK IPTV",
-    "IPTV service UK",
-    "watch UK channels online",
-    "best IPTV 2025",
-    "Firestick IPTV",
-    "Sky Sports IPTV",
-    "4K IPTV",
+    "British IPTV",
+    "IPTV subscription UK",
+    "best IPTV UK",
+    "Firestick IPTV UK",
+    "4K IPTV UK",
   ],
   authors: [{ name: "British IPTV" }],
   creator: "British IPTV",
   icons: {
     icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: BASE_URL,
     siteName: "British IPTV",
-    title: "British IPTV — 50,000+ Channels in 4K",
+    title: "IPTV UK – Best UK IPTV Subscription | British IPTV",
     description:
-      "Stream 50,000+ live UK and international channels in 4K Ultra HD. No buffering, 7-day catch-up, works on any device. Free 3-hour trial.",
-    images: [
-      {
-        url: "/og-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "British IPTV — Stream 50,000+ Channels in 4K",
-      },
-    ],
+      "IPTV UK subscription with 50,000+ live channels and 200,000+ movies & series in 4K. Free 3-hour trial.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "British IPTV — 50,000+ Channels in 4K",
+    title: "IPTV UK – Best UK IPTV Subscription | British IPTV",
     description:
-      "Stream 50,000+ live UK and international channels in 4K Ultra HD. Free 3-hour trial.",
-    images: ["/og-image.svg"],
+      "IPTV UK subscription with 50,000+ live channels and 200,000+ movies & series in 4K. Free 3-hour trial.",
     creator: "@iptvbritish",
   },
   robots: {
@@ -74,9 +71,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: BASE_URL,
-  },
 };
 
 export default function RootLayout({
@@ -86,10 +80,16 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      lang="en-GB"
+      className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+        {children}
+        <Motion />
+      </body>
     </html>
   );
 }

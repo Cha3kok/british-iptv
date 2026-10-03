@@ -19,10 +19,14 @@ export default function StickyBar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (dismissed || !visible) return null;
+  if (dismissed) return null;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-40 bg-[#111111]/95 backdrop-blur border-t border-white/10 shadow-2xl">
+    <div
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink-900/85 shadow-2xl backdrop-blur-xl transition-transform duration-500 ease-out ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
           {/* Live dot */}
@@ -40,7 +44,7 @@ export default function StickyBar() {
             href="https://wa.me/212707711512?text=iptv-british.com%20-%20Free%203-Hour%20Trial"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-amber-500 hover:bg-amber-400 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors whitespace-nowrap"
+            className="whitespace-nowrap rounded-full bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-600/30 transition-transform hover:scale-105"
           >
             Start Free Trial
           </a>

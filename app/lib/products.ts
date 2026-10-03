@@ -39,7 +39,7 @@ export const products: Product[] = [
     price: 15,
     period: "one-off payment",
     highlight: false,
-    metaTitle: "1 Month British IPTV — £15 | 50,000+ Channels, 4K HD | British IPTV",
+    metaTitle: "1 Month IPTV UK Subscription – £15 | British IPTV",
     metaDescription:
       "Get 1 month of British IPTV for just £15. 50,000+ live channels, 4K Ultra HD, 7-day catch-up, zero buffering. No contract. Instant activation. Free 3-hour trial available.",
     h1: "1 Month British IPTV — £15 One-Off Payment",
@@ -55,7 +55,7 @@ export const products: Product[] = [
       {
         title: "Short-Stay Visitors to the UK",
         description:
-          "Visiting the UK for a few weeks? Get full access to British TV including BBC, ITV, Channel 4, and all major sports channels for the duration of your stay. No need to sign up for a costly cable package.",
+          "Visiting the UK for a few weeks? Get full access to British TV including all the main UK entertainment and sports channels for the duration of your stay. No need to sign up for a costly cable package.",
       },
       {
         title: "Seasonal or Event Viewers",
@@ -90,7 +90,7 @@ export const products: Product[] = [
         name: "James T.",
         city: "Manchester",
         rating: 5,
-        text: "I just wanted to test IPTV before committing and the 1-month plan was perfect. The picture quality on Sky Sports was genuinely better than my old satellite. I've since upgraded to the 6-month plan.",
+        text: "I just wanted to test IPTV before committing and the 1-month plan was perfect. The picture quality on the sports channels was genuinely better than my old satellite. I've since upgraded to the 6-month plan.",
       },
       {
         name: "Priya S.",
@@ -102,7 +102,7 @@ export const products: Product[] = [
         name: "Daniel H.",
         city: "Leeds",
         rating: 5,
-        text: "Used the 1-month plan to watch the Champions League knockout stages. Zero buffering on any game, even the late-night European ones. Support was fast when I had a question on day one.",
+        text: "Used the 1-month plan to watch the European football knockout stages. Zero buffering on any game, even the late-night European ones. Support was fast when I had a question on day one.",
       },
     ],
   },
@@ -112,7 +112,7 @@ export const products: Product[] = [
     price: 35,
     period: "one-off payment",
     highlight: false,
-    metaTitle: "3 Months British IPTV — £35 | Save vs Monthly | British IPTV",
+    metaTitle: "3 Month IPTV UK Subscription – £35 | British IPTV",
     metaDescription:
       "3 months of British IPTV for £35 — that's under £12/month. 50,000+ channels, 4K Ultra HD, 7-day catch-up. No contract, instant activation. Try free for 3 hours.",
     h1: "3 Months British IPTV — £35 One-Off Payment",
@@ -133,7 +133,7 @@ export const products: Product[] = [
       {
         title: "Working Professionals Abroad",
         description:
-          "Posted abroad for a quarter? This plan keeps you connected to British TV — BBC, ITV, Channel 4, Sky Sports — wherever you are in the world. Our service works globally without a VPN.",
+          "Posted abroad for a quarter? This plan keeps you connected to British TV — entertainment, sports, news and more — wherever you are in the world. Our service works globally without a VPN.",
       },
     ],
     faq: [
@@ -165,7 +165,7 @@ export const products: Product[] = [
         name: "Ahmed K.",
         city: "London",
         rating: 5,
-        text: "I was sceptical but the trial convinced me. Signed up for 3 months and I've had no issues at all. BBC, ITV, all the Sky Sports channels — all working perfectly. Will probably go for 6 months next time.",
+        text: "I was sceptical but the trial convinced me. Signed up for 3 months and I've had no issues at all. Entertainment, news, all the sports channels — all working perfectly. Will probably go for 6 months next time.",
       },
       {
         name: "Claire W.",
@@ -182,7 +182,7 @@ export const products: Product[] = [
     period: "one-off payment",
     badge: "Most Popular",
     highlight: true,
-    metaTitle: "6 Months British IPTV — £45 | Most Popular Plan | British IPTV",
+    metaTitle: "6 Month IPTV UK Subscription – £45 | British IPTV",
     metaDescription:
       "6 months of British IPTV for just £45 — only £7.50/month. Most popular plan. 50,000+ channels, 4K Ultra HD, 7-day catch-up, anti-freeze technology. Instant setup.",
     h1: "6 Months British IPTV — £45 One-Off Payment",
@@ -193,17 +193,17 @@ export const products: Product[] = [
       {
         title: "Regular TV Watchers",
         description:
-          "You watch TV most evenings and weekends. You want reliable access to live sports, drama, documentaries, and news without paying Sky prices. At £7.50/month, the 6-month plan is the sweet spot — great savings, still flexible enough to reassess in six months.",
+          "You watch TV most evenings and weekends. You want reliable access to live sports, drama, documentaries, and news without paying satellite prices. At £7.50/month, the 6-month plan is the sweet spot — great savings, still flexible enough to reassess in six months.",
       },
       {
         title: "Sports Season Followers",
         description:
-          "A Premier League season runs from August to May — roughly nine months. The 6-month plan covers the crucial mid-season period including the January transfer window, Champions League knockout stages, and the championship run-in. Add a second 6-month plan to cover the rest.",
+          "A football season runs from August to May — roughly nine months. The 6-month plan covers the crucial mid-season period including the January transfer window, the European knockout stages, and the championship run-in. Add a second 6-month plan to cover the rest.",
       },
       {
         title: "Families Replacing Cable TV",
         description:
-          "For families thinking about ditching their Sky or Virgin subscription, 6 months is the ideal trial period. It's long enough to properly evaluate whether IPTV meets all your household's needs — kids' channels, sports, soaps, news — before making a longer commitment.",
+          "For families thinking about ditching their satellite or cable subscription, 6 months is the ideal trial period. It's long enough to properly evaluate whether IPTV meets all your household's needs — kids' channels, sports, soaps, news — before making a longer commitment.",
       },
     ],
     faq: [
@@ -233,13 +233,13 @@ export const products: Product[] = [
         name: "Mark B.",
         city: "Liverpool",
         rating: 5,
-        text: "Been on the 6-month plan for over a year now — keep renewing it every time. Sky Sports in 4K with zero buffering. My mates can't believe how much I'm saving. Should have switched years ago.",
+        text: "Been on the 6-month plan for over a year now — keep renewing it every time. Live sport in 4K with zero buffering. My mates can't believe how much I'm saving. Should have switched years ago.",
       },
       {
         name: "Emma F.",
         city: "Cardiff",
         rating: 5,
-        text: "Switched from Sky after 8 years and genuinely haven't missed it. Everything I was watching on Sky is here, plus loads more. The whole family uses it — different devices, different rooms, no issues.",
+        text: "Switched from satellite after 8 years and genuinely haven't missed it. Everything I was watching before is here, plus loads more. The whole family uses it — different devices, different rooms, no issues.",
       },
       {
         name: "Tariq M.",
@@ -255,7 +255,7 @@ export const products: Product[] = [
     price: 60,
     period: "one-off payment",
     highlight: false,
-    metaTitle: "12 Months British IPTV — £60 | Only £5/Month | British IPTV",
+    metaTitle: "12 Month IPTV UK Subscription – £5/Month | British IPTV",
     metaDescription:
       "12 months of British IPTV for just £60 — that's £5 per month. Full year of 50,000+ channels, 4K streaming, 7-day catch-up. Best value for committed viewers. Instant setup.",
     h1: "12 Months British IPTV — £60 One-Off Payment",
@@ -266,12 +266,12 @@ export const products: Product[] = [
       {
         title: "Committed TV Households",
         description:
-          "You and your family watch TV every day. You've already tried IPTV and know it works for you. The 12-month plan gives you an entire year of uninterrupted access for just £60 — less than two months of a Sky subscription — with zero admin for 12 months.",
+          "You and your family watch TV every day. You've already tried IPTV and know it works for you. The 12-month plan gives you an entire year of uninterrupted access for just £60 — less than two months of a satellite TV subscription — with zero admin for 12 months.",
       },
       {
         title: "Sports Superfans",
         description:
-          "A full year covers every Premier League game, the World Cup, Olympics, Wimbledon, Tour de France, F1 season, Six Nations, and every boxing night. You'll never have to think about renewing mid-season — just subscribe once and you're set for the year.",
+          "A full year covers the whole football season, every major international tournament, tennis, cycling, motorsport, rugby, and every boxing night. You'll never have to think about renewing mid-season — just subscribe once and you're set for the year.",
       },
       {
         title: "Families Wanting the Best Value",
@@ -290,7 +290,7 @@ export const products: Product[] = [
       },
       {
         q: "Does the 12-month plan cover all sports seasons?",
-        a: "Yes. A 12-month subscription runs from your activation date, covering all sporting events in that period. Football, Formula 1, cricket, tennis, golf, boxing, rugby — if it's broadcast on the channels in our lineup, you'll have access.",
+        a: "Yes. A 12-month subscription runs from your activation date, covering all sporting events in that period. Football, motorsport, cricket, tennis, golf, boxing, rugby — if it's broadcast on the channels in our lineup, you'll have access.",
       },
       {
         q: "Can I share my 12-month subscription with family?",
@@ -306,7 +306,7 @@ export const products: Product[] = [
         name: "Gareth P.",
         city: "Swansea",
         rating: 5,
-        text: "Been on the 12-month plan for two years running. At £5 a month I can't justify going back to Sky. The whole football season covered, all the boxing, F1 — everything. Genuinely the best TV decision I've made.",
+        text: "Been on the 12-month plan for two years running. At £5 a month I can't justify going back to satellite. The whole football season covered, all the boxing, motorsport — everything. Genuinely the best TV decision I've made.",
       },
       {
         name: "Naomi A.",
@@ -318,7 +318,7 @@ export const products: Product[] = [
         name: "Robert C.",
         city: "Glasgow",
         rating: 5,
-        text: "I was spending £85/month on Sky. Now I pay £60 once a year. Same channels, better picture on 4K, and I actually get more content. The setup guide was brilliant — had it running on my Samsung TV in minutes.",
+        text: "I was spending £85/month on satellite TV. Now I pay £60 once a year. Same channels, better picture on 4K, and I actually get more content. The setup guide was brilliant — had it running on my Samsung TV in minutes.",
       },
     ],
   },
@@ -329,7 +329,7 @@ export const products: Product[] = [
     period: "one-off payment",
     badge: "Best Value",
     highlight: false,
-    metaTitle: "24 Months British IPTV — £110 | Best Value | Only £4.58/Month | British IPTV",
+    metaTitle: "24 Month IPTV UK Subscription – £110 | British IPTV",
     metaDescription:
       "24 months of British IPTV for £110 — just £4.58/month. Best value plan. 50,000+ channels, 4K streaming, 7-day catch-up. Two full years with one payment. Instant setup.",
     h1: "24 Months British IPTV — £110 One-Off Payment",
@@ -380,13 +380,13 @@ export const products: Product[] = [
         name: "Kevin O.",
         city: "Dublin",
         rating: 5,
-        text: "I'm an Irish lad who loves British TV — Premier League, Bake Off, the lot. The 24-month plan means I don't think about renewing for two years. At £4.58 a month it's a no-brainer. Best purchase I've made.",
+        text: "I'm an Irish lad who loves British TV — football, baking shows, the lot. The 24-month plan means I don't think about renewing for two years. At £4.58 a month it's a no-brainer. Best purchase I've made.",
       },
       {
         name: "Linda M.",
         city: "Newcastle",
         rating: 5,
-        text: "I got this for my mum who was paying £70/month for Sky. We set it up on her Smart TV and she hasn't noticed any difference in quality — except she can now watch MORE channels. She's saving over £1,500 over two years.",
+        text: "I got this for my mum who was paying £70/month for satellite TV. We set it up on her Smart TV and she hasn't noticed any difference in quality — except she can now watch MORE channels. She's saving over £1,500 over two years.",
       },
       {
         name: "Hassan B.",

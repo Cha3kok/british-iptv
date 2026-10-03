@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Refund Policy — British IPTV | Money-Back Guarantee",
+  title: { absolute: "Refund Policy — British IPTV | Money-Back Guarantee" },
   description: "British IPTV refund policy: 48-hour money-back guarantee if service doesn't work as described. Check your refund rights and eligibility terms.",
   alternates: { canonical: "https://iptv-british.com/refund-policy" },
   openGraph: {

@@ -1,12 +1,12 @@
 function Skeleton({ className }: { className?: string }) {
-  return <div className={`animate-pulse bg-[#1a1a1a] rounded-lg ${className ?? ""}`} />;
+  return <div className={`animate-pulse bg-ink-700 rounded-lg ${className ?? ""}`} />;
 }
 
 export default function PostLoading() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-ink-950 text-white">
       {/* Header */}
-      <div className="bg-[#0a0a0a] border-b border-white/5 pt-24 pb-14">
+      <div className="bg-ink-900 border-b border-white/5 pt-24 pb-14">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Skeleton className="h-4 w-28 mb-6" />
           <div className="flex gap-3 mb-5">

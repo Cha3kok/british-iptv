@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 const deviceOptions = [1, 2, 3, 4];
 
@@ -76,35 +77,37 @@ export default function Pricing() {
   const [devices, setDevices] = useState<1 | 2 | 3 | 4>(1);
 
   return (
-    <section id="pricing" className="bg-[#0a0a0a] py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Pricing
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Simple, honest pricing
-          </h2>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto">
-            No hidden fees. No contracts. Cancel anytime. Free 3-hour trial available.
-          </p>
-        </div>
+    <section id="pricing" className="relative overflow-hidden bg-ink-900 py-28">
+      <div className="pointer-events-none absolute -left-40 top-40 h-[420px] w-[420px] rounded-full bg-brand-600/20 blur-[120px] animate-aurora" />
+      <div className="pointer-events-none absolute -right-40 bottom-20 h-[420px] w-[420px] rounded-full bg-accent-600/15 blur-[120px] animate-aurora [animation-delay:-8s]" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Pricing"
+          title={
+            <>
+              Simple, <span className="text-gradient">honest</span> pricing
+            </>
+          }
+          subtitle="No hidden fees. No contracts. Cancel anytime. Free 3-hour trial available."
+          className="mb-12!"
+        />
 
         {/* Device selector */}
-        <div className="flex flex-col items-center mb-12">
-          <p className="text-zinc-400 text-sm mb-4">
-            How many devices do you need?
-          </p>
-          <div className="inline-flex bg-[#111111] border border-white/10 rounded-full p-1 gap-1">
+        <div className="reveal mb-14 flex flex-col items-center">
+          <p className="mb-4 text-sm text-zinc-400">How many devices do you need?</p>
+          <div className="relative inline-grid grid-cols-4 rounded-full border border-white/10 bg-ink-800 p-1">
+            {/* Sliding pill */}
+            <span
+              className="absolute inset-y-1 left-1 rounded-full bg-gradient-to-r from-brand-600 to-brand-500 shadow-lg shadow-brand-600/40 transition-transform duration-300 ease-out"
+              style={{ width: "calc((100% - 0.5rem) / 4)", transform: `translateX(${(devices - 1) * 100}%)` }}
+            />
             {deviceOptions.map((d) => (
               <button
                 key={d}
                 onClick={() => setDevices(d as 1 | 2 | 3 | 4)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
-                  devices === d
-                    ? "bg-amber-500 text-white shadow"
-                    : "text-zinc-400 hover:text-white"
+                className={`relative z-10 whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold transition-colors sm:px-5 ${
+                  devices === d ? "text-white" : "text-zinc-400 hover:text-white"
                 }`}
               >
                 {d} {d === 1 ? "Device" : "Devices"}
@@ -114,66 +117,87 @@ export default function Pricing() {
         </div>
 
         {/* Plans grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-start mb-10">
-          {plans.map((plan) => {
+        <div className="mb-10 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {plans.map((plan, i) => {
             const price = plan.devicePrices[devices as keyof typeof plan.devicePrices];
-            return (
+            const href = `https://wa.me/212707711512?text=${encodeURIComponent(`iptv-british.com - ${plan.name} / ${devices} ${devices === 1 ? "Device" : "Devices"} - £${price}`)}`;
+
+            const body = (
               <div
-                key={plan.name}
-                className={`relative rounded-2xl p-6 border flex flex-col transition-all ${
-                  plan.highlight
-                    ? "bg-gradient-to-br from-amber-500 to-amber-600 border-amber-400 shadow-2xl shadow-amber-900/40 scale-105"
-                    : "bg-[#111111] border-white/10 hover:border-white/20"
+                className={`relative flex h-full flex-col rounded-[1.2rem] p-6 ${
+                  plan.highlight ? "bg-gradient-to-b from-ink-700 to-ink-900" : ""
                 }`}
               >
                 {plan.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-amber-500 text-[11px] font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                  <div
+                    className={`absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[11px] font-bold ${
+                      plan.highlight
+                        ? "bg-gradient-to-r from-brand-500 to-accent-500 text-white shadow-lg shadow-brand-600/40"
+                        : "bg-white text-brand-700"
+                    }`}
+                  >
                     {plan.badge}
                   </div>
                 )}
 
-                <p className={`font-bold text-base mb-0.5 ${plan.highlight ? "text-white" : "text-white"}`}>
-                  {plan.name}
-                </p>
-                <p className={`text-xs mb-4 ${plan.highlight ? "text-amber-100" : "text-zinc-500"}`}>
-                  {plan.description}
-                </p>
+                <p className="mb-0.5 text-base font-bold text-white">{plan.name}</p>
+                <p className="mb-5 text-xs text-zinc-500">{plan.description}</p>
 
-                <div className="mb-1">
-                  <span className={`text-3xl font-bold ${plan.highlight ? "text-white" : "text-white"}`}>
-                    £{price}
+                <div className="mb-1 flex items-start gap-1">
+                  <span className="mt-1.5 text-lg font-semibold text-zinc-400">£</span>
+                  <span key={price} className="font-display text-5xl font-bold text-white animate-[pop_0.4s_ease-out]">
+                    {price}
                   </span>
                 </div>
-                <p className={`text-xs mb-5 ${plan.highlight ? "text-amber-100" : "text-zinc-500"}`}>
+                <p className="mb-6 text-xs text-zinc-500">
                   {plan.period} · {devices} {devices === 1 ? "connection" : "connections"}
                 </p>
 
                 <a
-                  href={`https://wa.me/212707711512?text=${encodeURIComponent(`iptv-british.com - ${plan.name} / ${devices} ${devices === 1 ? "Device" : "Devices"} - £${price}`)}`}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`mt-auto block text-center font-semibold py-2.5 rounded-full text-sm transition-colors ${
+                  className={`group mt-auto flex items-center justify-center gap-1.5 rounded-full py-3 text-sm font-semibold transition-all ${
                     plan.highlight
-                      ? "bg-white text-amber-500 hover:bg-amber-50"
-                      : "bg-amber-500 text-white hover:bg-amber-400"
+                      ? "bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/40 hover:shadow-brand-500/60"
+                      : "border border-white/15 bg-white/5 text-white hover:border-brand-500/60 hover:bg-brand-500/15"
                   }`}
                 >
                   Subscribe Now
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </a>
+              </div>
+            );
+
+            return (
+              <div
+                key={plan.name}
+                className="reveal"
+                style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}
+              >
+                {plan.highlight ? (
+                  <div className="glow-border h-full lg:-my-4 lg:scale-105">{body}</div>
+                ) : (
+                  <div className="spotlight h-full rounded-[1.25rem] border border-white/10 bg-ink-800/80 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-white/20">
+                    {body}
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
 
         {/* Features included in all plans */}
-        <div className="bg-[#111111] border border-white/5 rounded-2xl p-7">
-          <p className="text-zinc-400 text-xs uppercase tracking-wider font-medium mb-5">
+        <div className="reveal glass rounded-2xl p-7">
+          <p className="mb-5 text-xs font-medium uppercase tracking-wider text-zinc-400">
             Everything included in every plan
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {features.map((f) => (
               <div key={f} className="flex items-start gap-2 text-sm text-zinc-300">
-                <Check size={14} className="text-amber-400 flex-shrink-0 mt-0.5" />
+                <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-brand-500/20">
+                  <Check size={11} className="text-brand-300" />
+                </span>
                 {f}
               </div>
             ))}
@@ -181,19 +205,20 @@ export default function Pricing() {
         </div>
 
         {/* Highlights grid */}
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {highlights.map((h) => (
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {highlights.map((h, i) => (
             <div
               key={h.label}
-              className="flex items-center gap-3 bg-[#111111] border border-white/5 rounded-xl px-4 py-3"
+              className="reveal flex items-center gap-3 rounded-xl border border-white/[0.06] bg-ink-800/60 px-4 py-3 transition-colors hover:border-brand-500/30"
+              style={{ "--delay": `${(i % 5) * 50}ms` } as React.CSSProperties}
             >
-              <span className="text-xl flex-shrink-0">{h.icon}</span>
-              <span className="text-zinc-300 text-xs font-medium leading-snug">{h.label}</span>
+              <span className="flex-shrink-0 text-xl">{h.icon}</span>
+              <span className="text-xs font-medium leading-snug text-zinc-300">{h.label}</span>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-zinc-500 text-sm mt-8">
+        <p className="mt-8 text-center text-sm text-zinc-500">
           All plans include a free 3-hour trial. Contact us on WhatsApp to activate it — no credit card required.
         </p>
       </div>

@@ -66,9 +66,9 @@ export default function SocialProof() {
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       }`}
     >
-      <div className="bg-[#111111] border border-amber-500/20 rounded-2xl px-4 py-3 shadow-2xl shadow-black/60 flex items-center gap-3 max-w-[260px]">
+      <div className="bg-ink-800 border border-brand-500/20 rounded-2xl px-4 py-3 shadow-2xl shadow-black/60 flex items-center gap-3 max-w-[260px]">
         {/* Avatar */}
-        <div className="w-9 h-9 rounded-full bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-lg flex-shrink-0">
+        <div className="w-9 h-9 rounded-full bg-brand-500/15 border border-brand-500/30 flex items-center justify-center text-lg flex-shrink-0">
           {current.flag}
         </div>
 
@@ -76,7 +76,7 @@ export default function SocialProof() {
           <p className="text-white text-xs font-semibold leading-snug">
             {current.name} from {current.city}
           </p>
-          <p className="text-amber-400 text-[11px] font-medium">
+          <p className="text-brand-400 text-[11px] font-medium">
             subscribed to {current.plan} plan
           </p>
           <p className="text-zinc-500 text-[10px] mt-0.5">{minutesAgo} min ago</p>

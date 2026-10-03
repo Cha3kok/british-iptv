@@ -7,7 +7,7 @@ import WhatsAppButton from "../components/WhatsAppButton";
 import JsonLd from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "About British IPTV — Premium UK IPTV Service Provider",
+  title: { absolute: "About British IPTV — Premium UK IPTV Service Provider" },
   description:
     "Discover British IPTV: trusted by 25,000+ subscribers. We deliver 50,000+ live channels, 4K streaming, and 99.9% uptime. Learn our mission and why UK families choose us.",
   alternates: { canonical: "https://iptv-british.com/about" },
@@ -36,11 +36,11 @@ const aboutSchema = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-ink-950 text-white">
       <JsonLd data={aboutSchema} />
       <Navbar />
 
-      <div className="bg-[#0a0a0a] border-b border-white/5 pt-24 pb-14">
+      <div className="bg-ink-900 border-b border-white/5 pt-24 pb-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -48,7 +48,7 @@ export default function AboutPage() {
           >
             <ChevronLeft size={14} /> Back to Home
           </Link>
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">About Us</p>
+          <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">About Us</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Britain&apos;s most trusted IPTV provider
           </h1>
@@ -62,8 +62,8 @@ export default function AboutPage() {
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
           {stats.map(({ icon: Icon, value, label }) => (
-            <div key={label} className="bg-[#111111] border border-white/5 rounded-2xl p-6 text-center">
-              <Icon size={22} className="text-amber-400 mx-auto mb-3" />
+            <div key={label} className="bg-ink-800 border border-white/5 rounded-2xl p-6 text-center">
+              <Icon size={22} className="text-brand-400 mx-auto mb-3" />
               <p className="text-white font-bold text-2xl mb-1">{value}</p>
               <p className="text-zinc-400 text-xs">{label}</p>
             </div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
         </div>
 
         {/* Mission */}
-        <div className="bg-[#111111] border border-white/5 rounded-2xl p-8 space-y-4">
+        <div className="bg-ink-800 border border-white/5 rounded-2xl p-8 space-y-4">
           <h2 className="text-2xl font-bold text-white">Our Mission</h2>
           <p className="text-zinc-300 leading-8">
             To give every household in the UK access to world-class television at a fair price — with no contracts, no hidden fees, and no compromise on quality. We believe great TV should be for everyone, not just those who can afford a premium satellite package.
@@ -102,7 +102,7 @@ export default function AboutPage() {
               ["No Long Contracts", "Monthly, quarterly, or annual — your choice. Cancel anytime without penalty."],
               ["Constant Improvement", "We release updates, add channels, and improve performance every month based on what our customers tell us."],
             ].map(([title, desc]) => (
-              <div key={title} className="bg-[#111111] border border-white/5 rounded-xl p-5">
+              <div key={title} className="bg-ink-800 border border-white/5 rounded-xl p-5">
                 <p className="text-white font-semibold mb-2">{title}</p>
                 <p className="text-zinc-400 text-sm leading-relaxed">{desc}</p>
               </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-br from-amber-950/40 to-zinc-900 border border-amber-900/30 rounded-2xl p-10 text-center">
+        <div className="bg-gradient-to-br from-brand-950/40 to-zinc-900 border border-brand-900/30 rounded-2xl p-10 text-center">
           <h3 className="text-white font-bold text-2xl mb-3">Ready to join us?</h3>
           <p className="text-zinc-400 mb-7 max-w-md mx-auto">
             Try the service free for 3 hours — no credit card required. See exactly why 25,000+ customers chose us.
@@ -121,7 +121,7 @@ export default function AboutPage() {
               href="https://wa.me/212707711512?text=iptv-british.com%20-%20Free%203-Hour%20Trial"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-amber-500 hover:bg-amber-400 text-white font-semibold px-8 py-3.5 rounded-full text-sm transition-colors"
+              className="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-8 py-3.5 rounded-full text-sm transition-colors"
             >
               Start Free Trial
             </a>

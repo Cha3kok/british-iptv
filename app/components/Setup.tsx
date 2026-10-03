@@ -1,4 +1,5 @@
-import { CreditCard, Download, Tv2 } from "lucide-react";
+import { CreditCard, Download, Tv2, MessageCircle } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 const steps = [
   {
@@ -29,63 +30,72 @@ const steps = [
 
 export default function Setup() {
   return (
-    <section id="setup" className="bg-black py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Easy Setup
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Up and running in 3 simple steps
-          </h2>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto">
-            No technical knowledge needed. If you can download an app, you can set this up.
-          </p>
-        </div>
+    <section id="setup" className="relative overflow-hidden bg-ink-950 py-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Easy Setup"
+          title={
+            <>
+              Up and running in <span className="text-gradient">3 simple steps</span>
+            </>
+          }
+          subtitle="No technical knowledge needed. If you can download an app, you can set this up."
+        />
 
-        {/* Steps */}
         <div className="relative">
-          {/* Connector line (desktop) */}
-          <div className="hidden lg:block absolute top-16 left-[calc(16.66%+2rem)] right-[calc(16.66%+2rem)] h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
+          {/* Connector line (desktop) with travelling pulse */}
+          <div className="absolute left-[calc(16.66%+2.5rem)] right-[calc(16.66%+2.5rem)] top-10 hidden h-px overflow-hidden bg-white/10 lg:block">
+            <div className="h-full w-1/3 animate-[sweep_3.5s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-brand-400 to-transparent" />
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {steps.map(({ number, icon: Icon, title, description, detail }) => (
-              <div key={number} className="relative flex flex-col items-center text-center lg:items-center">
-                {/* Number bubble */}
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-900/40">
-                    <Icon size={26} className="text-white" />
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            {steps.map(({ number, icon: Icon, title, description, detail }, i) => (
+              <div
+                key={number}
+                className="reveal group relative flex flex-col items-center text-center"
+                style={{ "--delay": `${i * 150}ms` } as React.CSSProperties}
+              >
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 rounded-full bg-brand-500/40 blur-xl transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
+                  <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 ring-8 ring-ink-950 transition-transform duration-500 group-hover:scale-110">
+                    <Icon size={30} className="text-white" />
                   </div>
-                  <span className="absolute -top-2 -right-2 bg-[#1a1a1a] border border-white/10 text-zinc-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+                  <span className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-accent-500 to-accent-600 text-xs font-bold text-white ring-4 ring-ink-950">
                     {number.slice(1)}
                   </span>
                 </div>
 
-                <h3 className="text-white font-bold text-xl mb-3">{title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4 max-w-xs">{description}</p>
-                <span className="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium px-3 py-1.5 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                  {detail}
-                </span>
+                <div className="spotlight w-full rounded-3xl border border-white/[0.07] bg-ink-900/80 p-7 transition-colors duration-300 group-hover:border-brand-500/30">
+                  <h3 className="mb-3 text-xl font-bold text-white">{title}</h3>
+                  <p className="mx-auto mb-5 max-w-xs text-sm leading-relaxed text-zinc-400">{description}</p>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-400">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                    {detail}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* CTA strip */}
-        <div className="mt-16 bg-[#111111] border border-white/5 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="text-white font-semibold text-lg mb-1">Need help getting started?</p>
-            <p className="text-zinc-400 text-sm">Our support team will set everything up for you — for free.</p>
+        <div className="reveal relative mt-16 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-brand-900/60 via-ink-800 to-ink-800 p-8 sm:p-10">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#25D366]/15 blur-3xl" />
+          <div className="relative flex flex-col items-center justify-between gap-6 sm:flex-row">
+            <div className="text-center sm:text-left">
+              <p className="mb-1 text-xl font-semibold text-white">Need help getting started?</p>
+              <p className="text-sm text-zinc-400">Our support team will set everything up for you — for free.</p>
+            </div>
+            <a
+              href="https://wa.me/212707711512?text=Hi%2C%20I%20need%20help%20setting%20up%20my%20IPTV"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/30 transition-transform hover:scale-105"
+            >
+              <MessageCircle size={16} />
+              Get Free Setup Help
+            </a>
           </div>
-          <a
-            href="https://wa.me/212707711512?text=Hi%2C%20I%20need%20help%20setting%20up%20my%20IPTV"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-          >
-            Get Free Setup Help
-          </a>
         </div>
       </div>
     </section>

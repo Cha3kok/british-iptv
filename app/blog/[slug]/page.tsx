@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://iptv-british.com/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
     },
     alternates: { canonical: `https://iptv-british.com/blog/${post.slug}` },
   };
@@ -41,7 +42,7 @@ const categoryColors: Record<string, string> = {
   Guides: "bg-blue-500/15 text-blue-400 border-blue-500/20",
   Beginners: "bg-green-500/15 text-green-400 border-green-500/20",
   Troubleshooting: "bg-yellow-500/15 text-yellow-400 border-yellow-500/20",
-  Sports: "bg-amber-400/15 text-amber-400 border-amber-400/20",
+  Sports: "bg-brand-400/15 text-brand-400 border-brand-400/20",
   Comparisons: "bg-purple-500/15 text-purple-400 border-purple-500/20",
 };
 
@@ -79,14 +80,14 @@ const mdxComponents = {
     <strong className="text-white font-semibold" {...props} />
   ),
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a className="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors" {...props} />
+    <a className="text-brand-400 hover:text-brand-300 underline underline-offset-2 transition-colors" {...props} />
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote className="border-l-4 border-amber-500 pl-4 my-6 text-zinc-400 italic" {...props} />
+    <blockquote className="border-l-4 border-brand-500 pl-4 my-6 text-zinc-400 italic" {...props} />
   ),
   hr: () => <hr className="border-white/10 my-8" />,
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code className="bg-[#1a1a1a] text-amber-400 text-sm px-1.5 py-0.5 rounded font-mono" {...props} />
+    <code className="bg-ink-700 text-brand-400 text-sm px-1.5 py-0.5 rounded font-mono" {...props} />
   ),
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="overflow-x-auto my-8 rounded-xl border border-white/10">
@@ -103,18 +104,18 @@ const mdxComponents = {
     <tr className="border-b border-white/5 hover:bg-white/5 transition-colors" {...props} />
   ),
   th: (props: React.ThHTMLAttributes<HTMLTableCellElement>) => (
-    <th className="text-left py-3 px-4 text-amber-400 font-semibold text-sm whitespace-nowrap" {...props} />
+    <th className="text-left py-3 px-4 text-brand-400 font-semibold text-sm whitespace-nowrap" {...props} />
   ),
   td: (props: React.TdHTMLAttributes<HTMLTableCellElement>) => (
     <td className="py-3 px-4 text-zinc-300 text-sm" {...props} />
   ),
   CTA: ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <div className="my-8 bg-gradient-to-br from-amber-950/40 to-zinc-900 border border-amber-900/30 rounded-2xl p-6 text-center">
+    <div className="my-8 bg-gradient-to-br from-brand-950/40 to-zinc-900 border border-brand-900/30 rounded-2xl p-6 text-center">
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-amber-500 hover:bg-amber-400 text-white font-semibold px-8 py-3 rounded-full text-sm transition-colors"
+        className="inline-block bg-brand-500 hover:bg-brand-400 text-white font-semibold px-8 py-3 rounded-full text-sm transition-colors"
       >
         {children}
       </a>
@@ -137,19 +138,20 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    image: "https://iptv-british.com/og-image.svg",
+    image: `https://iptv-british.com${post.coverImage ?? "/og-image.png"}`,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     url: `https://iptv-british.com/blog/${post.slug}`,
+    inLanguage: "en-GB",
+    mainEntityOfPage: `https://iptv-british.com/blog/${post.slug}`,
     author: {
       "@type": "Organization",
-      name: "BritishIPTV",
+      name: "British IPTV",
       url: "https://iptv-british.com",
-      logo: "https://iptv-british.com/logo.png",
     },
     publisher: {
       "@type": "Organization",
-      name: "BritishIPTV",
+      name: "British IPTV",
       url: "https://iptv-british.com",
       logo: {
         "@type": "ImageObject",
@@ -184,13 +186,13 @@ export default async function BlogPostPage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-ink-950 text-white">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <Navbar />
 
       {/* Hero */}
-      <div className="bg-[#0a0a0a] border-b border-white/5 pt-24 pb-14">
+      <div className="bg-ink-900 border-b border-white/5 pt-24 pb-14">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/blog"
@@ -200,13 +202,15 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
 
           <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full border ${categoryColors[post.category] ?? "bg-[#1a1a1a] text-zinc-400 border-white/10"}`}>
+            <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full border ${categoryColors[post.category] ?? "bg-ink-700 text-zinc-400 border-white/10"}`}>
               <Tag size={11} /> {post.category}
             </span>
             <span className="flex items-center gap-1 text-zinc-500 text-xs">
               <Clock size={11} /> {post.readTime}
             </span>
-            <span className="text-zinc-500 text-xs">{formatDate(post.date)}</span>
+            <time dateTime={post.updated ?? post.date} className="text-zinc-500 text-xs">
+              {post.updated ? `Updated ${formatDate(post.updated)}` : formatDate(post.date)}
+            </time>
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
@@ -232,7 +236,7 @@ export default async function BlogPostPage({ params }: Props) {
         <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
 
         {/* CTA box */}
-        <div className="mt-14 bg-gradient-to-br from-amber-950/40 to-zinc-900 border border-amber-900/30 rounded-2xl p-8 text-center">
+        <div className="mt-14 bg-gradient-to-br from-brand-950/40 to-zinc-900 border border-brand-900/30 rounded-2xl p-8 text-center">
           <h3 className="text-white font-bold text-xl mb-2">Ready to try it yourself?</h3>
           <p className="text-zinc-400 text-sm mb-6">
             Get a free 3-hour trial — no credit card required. Our team sets it up for you.
@@ -242,7 +246,7 @@ export default async function BlogPostPage({ params }: Props) {
               href="https://wa.me/212707711512?text=iptv-british.com%20-%20Free%203-Hour%20Trial"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-amber-500 hover:bg-amber-400 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+              className="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
             >
               Start Free Trial
             </a>
@@ -266,13 +270,13 @@ export default async function BlogPostPage({ params }: Props) {
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group bg-[#111111] border border-white/5 hover:border-amber-500/30 rounded-2xl p-5 transition-all"
+                  className="group bg-ink-800 border border-white/5 hover:border-brand-500/30 rounded-2xl p-5 transition-all"
                 >
-                  <p className="text-white font-semibold text-sm mb-2 group-hover:text-amber-400 transition-colors leading-snug">
+                  <p className="text-white font-semibold text-sm mb-2 group-hover:text-brand-400 transition-colors leading-snug">
                     {p.title}
                   </p>
                   <p className="text-zinc-500 text-xs line-clamp-2">{p.excerpt}</p>
-                  <span className="flex items-center gap-1 text-amber-400 text-xs mt-3 font-medium">
+                  <span className="flex items-center gap-1 text-brand-400 text-xs mt-3 font-medium">
                     Read More <ArrowRight size={12} />
                   </span>
                 </Link>

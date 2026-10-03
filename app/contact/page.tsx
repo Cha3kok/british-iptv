@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import JsonLd from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Contact British IPTV Support — 24/7 WhatsApp & Email",
+  title: { absolute: "Contact British IPTV Support — 24/7 WhatsApp & Email" },
   description:
     "Get instant help from British IPTV support. Available 24/7 via WhatsApp or email for setup, billing, and technical issues. Typical response: under 5 minutes.",
   alternates: { canonical: "https://iptv-british.com/contact" },
@@ -55,11 +55,11 @@ const faqs = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-ink-950 text-white">
       <JsonLd data={contactSchema} />
       <Navbar />
 
-      <div className="bg-[#0a0a0a] border-b border-white/5 pt-24 pb-14">
+      <div className="bg-ink-900 border-b border-white/5 pt-24 pb-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -67,7 +67,7 @@ export default function ContactPage() {
           >
             <ChevronLeft size={14} /> Back to Home
           </Link>
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">Contact</p>
+          <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">Contact</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">We&apos;re here to help</h1>
           <p className="text-zinc-400 text-lg max-w-xl">
             Real support from real people — available 24 hours a day, 7 days a week.
@@ -94,11 +94,11 @@ export default function ContactPage() {
               className={`rounded-2xl p-7 border flex flex-col gap-4 ${
                 ch.highlight
                   ? "bg-[#25D366]/10 border-[#25D366]/30"
-                  : "bg-[#111111] border-white/5"
+                  : "bg-ink-800 border-white/5"
               }`}
             >
-              <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${ch.highlight ? "bg-[#25D366]/20" : "bg-[#1a1a1a]"}`}>
-                <ch.icon size={20} className={ch.highlight ? "text-[#25D366]" : "text-amber-400"} />
+              <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${ch.highlight ? "bg-[#25D366]/20" : "bg-ink-700"}`}>
+                <ch.icon size={20} className={ch.highlight ? "text-[#25D366]" : "text-brand-400"} />
               </div>
               <div>
                 <h2 className="text-white font-bold text-lg mb-1">{ch.title}</h2>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                 className={`mt-auto self-start font-semibold text-sm px-5 py-2.5 rounded-full transition-colors ${
                   ch.highlight
                     ? "bg-[#25D366] hover:bg-[#20bd5a] text-white"
-                    : "bg-amber-500 hover:bg-amber-400 text-white"
+                    : "bg-brand-500 hover:bg-brand-400 text-white"
                 }`}
               >
                 {ch.action}
@@ -126,7 +126,7 @@ export default function ContactPage() {
           <h2 className="text-xl font-bold text-white mb-6">Quick Answers</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {faqs.map((faq) => (
-              <div key={faq.q} className="bg-[#111111] border border-white/5 rounded-xl p-5">
+              <div key={faq.q} className="bg-ink-800 border border-white/5 rounded-xl p-5">
                 <p className="text-white font-semibold text-sm mb-2">{faq.q}</p>
                 <p className="text-zinc-400 text-sm">{faq.a}</p>
               </div>
@@ -134,11 +134,11 @@ export default function ContactPage() {
           </div>
           <p className="text-zinc-500 text-sm mt-5">
             More questions?{" "}
-            <Link href="/#faq" className="text-amber-400 hover:text-amber-300 transition-colors">
+            <Link href="/#faq" className="text-brand-400 hover:text-brand-300 transition-colors">
               See our full FAQ
             </Link>
             {" "}or{" "}
-            <Link href="/setup" className="text-amber-400 hover:text-amber-300 transition-colors">
+            <Link href="/setup" className="text-brand-400 hover:text-brand-300 transition-colors">
               visit our setup guide
             </Link>.
           </p>

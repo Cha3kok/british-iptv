@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — British IPTV | Your Data Protection",
+  title: { absolute: "Privacy Policy — British IPTV | Your Data Protection" },
   description: "Learn how British IPTV collects, uses, and protects your personal data. We prioritize your privacy and security. Full transparency on data handling.",
   alternates: { canonical: "https://iptv-british.com/privacy-policy" },
   openGraph: {

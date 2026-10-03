@@ -1,4 +1,6 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
+import SectionHeader from "./SectionHeader";
+import CountUp from "./CountUp";
 
 const reviews = [
   {
@@ -6,8 +8,8 @@ const reviews = [
     location: "Manchester, UK",
     avatar: "JT",
     rating: 5,
-    title: "Finally switched from Sky — best decision ever",
-    body: "Paying £70/month for Sky was painful. I switched to British IPTV and I get more channels, better picture quality, and it costs me less than a tenner a month. Zero buffering in 6 months of use.",
+    title: "Finally switched from satellite — best decision ever",
+    body: "Paying £70/month for satellite TV was painful. I switched to British IPTV and I get more channels, better picture quality, and it costs me less than a tenner a month. Zero buffering in 6 months of use.",
     plan: "12-Month Plan",
   },
   {
@@ -16,7 +18,7 @@ const reviews = [
     avatar: "SM",
     rating: 5,
     title: "Setup was dead easy, works great on my Firestick",
-    body: "I was worried it'd be complicated but the setup guide was clear and I was watching within 10 minutes. The sports channels are incredible — got every Sky Sports and BT Sport channel.",
+    body: "I was worried it'd be complicated but the setup guide was clear and I was watching within 10 minutes. The sports channels are incredible — got every sports channel I wanted.",
     plan: "3-Month Plan",
   },
   {
@@ -73,18 +75,39 @@ function Stars({ count }: { count: number }) {
 
 function Avatar({ initials }: { initials: string }) {
   const colors: Record<string, string> = {
-    JT: "bg-blue-600",
-    SM: "bg-pink-600",
-    DK: "bg-purple-600",
-    LR: "bg-emerald-600",
-    AH: "bg-orange-600",
-    CW: "bg-teal-600",
+    JT: "from-brand-500 to-brand-700",
+    SM: "from-accent-400 to-accent-600",
+    DK: "from-violet-500 to-violet-700",
+    LR: "from-emerald-500 to-emerald-700",
+    AH: "from-sky-400 to-sky-600",
+    CW: "from-teal-500 to-teal-700",
   };
   return (
     <div
-      className={`w-10 h-10 rounded-full ${colors[initials] ?? "bg-amber-500"} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}
+      className={`w-10 h-10 rounded-full bg-gradient-to-br ${colors[initials] ?? "from-brand-500 to-brand-700"} ring-2 ring-white/10 flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}
     >
       {initials}
+    </div>
+  );
+}
+
+function ReviewCard({ r }: { r: (typeof reviews)[number] }) {
+  return (
+    <div className="spotlight relative w-[340px] shrink-0 rounded-3xl border border-white/[0.07] bg-ink-900/90 p-6 transition-colors hover:border-brand-500/30 sm:w-[380px]">
+      <Quote size={36} className="absolute right-5 top-5 text-white/[0.05]" />
+      <div className="mb-4 flex items-center gap-3">
+        <Avatar initials={r.avatar} />
+        <div>
+          <p className="text-sm font-semibold text-white">{r.name}</p>
+          <p className="text-xs text-zinc-500">{r.location}</p>
+        </div>
+        <span className="ml-auto whitespace-nowrap rounded-full bg-brand-500/15 px-2.5 py-1 text-xs font-medium text-brand-300">
+          {r.plan}
+        </span>
+      </div>
+      <Stars count={r.rating} />
+      <h4 className="mb-2 mt-3 text-sm font-semibold text-white">{r.title}</h4>
+      <p className="text-sm leading-relaxed text-zinc-400">{r.body}</p>
     </div>
   );
 }
@@ -92,55 +115,57 @@ function Avatar({ initials }: { initials: string }) {
 export default function Testimonials() {
   const totalReviews = 2847;
   const avgRating = 4.9;
+  const half = Math.ceil(reviews.length / 2);
+  const rows = [reviews.slice(0, half), reviews.slice(half)];
 
   return (
-    <section id="reviews" className="bg-[#0a0a0a] py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">
-            Customer Reviews
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Loved by thousands across the UK
-          </h2>
+    <section id="reviews" className="relative overflow-hidden bg-ink-900 py-28">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-accent-500/40 to-transparent" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Customer Reviews"
+          title={
+            <>
+              Loved by <span className="text-gradient">thousands</span> across the UK
+            </>
+          }
+          className="mb-10!"
+        />
 
-          {/* Aggregate rating */}
-          <div className="inline-flex flex-col items-center gap-2 bg-[#111111] border border-white/10 rounded-2xl px-8 py-5">
-            <div className="flex items-end gap-2">
-              <span className="text-5xl font-bold text-white">{avgRating}</span>
-              <span className="text-zinc-400 text-sm mb-2">/ 5.0</span>
+        <div className="reveal mb-14 flex justify-center">
+          <div className="glass inline-flex items-center gap-6 rounded-2xl px-8 py-5">
+            <div className="flex items-end gap-1.5">
+              <span className="font-display text-5xl font-bold text-white">
+                <CountUp to={avgRating} decimals={1} />
+              </span>
+              <span className="mb-2 text-sm text-zinc-400">/ 5.0</span>
             </div>
-            <Stars count={5} />
-            <p className="text-zinc-400 text-sm mt-1">
-              Based on <span className="text-white font-medium">{totalReviews.toLocaleString()}</span> verified reviews
-            </p>
+            <div className="h-12 w-px bg-white/10" />
+            <div className="flex flex-col items-start gap-1.5">
+              <Stars count={5} />
+              <p className="text-sm text-zinc-400">
+                <span className="font-medium text-white">
+                  <CountUp to={totalReviews} />
+                </span>{" "}
+                verified reviews
+              </p>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Reviews grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
-          {reviews.map((r) => (
+      <div className="reveal flex flex-col gap-5">
+        {rows.map((row, idx) => (
+          <div key={idx} className="mask-x pause-on-hover flex overflow-hidden">
             <div
-              key={r.name}
-              className="break-inside-avoid bg-[#111111] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-colors"
+              className={`flex shrink-0 gap-5 pr-5 ${idx % 2 ? "animate-marquee-reverse" : "animate-marquee"} [animation-duration:60s]`}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <Avatar initials={r.avatar} />
-                <div>
-                  <p className="text-white font-semibold text-sm">{r.name}</p>
-                  <p className="text-zinc-500 text-xs">{r.location}</p>
-                </div>
-                <span className="ml-auto bg-amber-500/15 text-amber-400 text-xs px-2.5 py-1 rounded-full font-medium">
-                  {r.plan}
-                </span>
-              </div>
-              <Stars count={r.rating} />
-              <h4 className="text-white font-semibold text-sm mt-3 mb-2">{r.title}</h4>
-              <p className="text-zinc-400 text-sm leading-relaxed">{r.body}</p>
+              {[...row, ...row, ...row, ...row].map((r, i) => (
+                <ReviewCard key={`${r.name}-${i}`} r={r} />
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
