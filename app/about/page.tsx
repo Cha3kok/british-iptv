@@ -9,17 +9,17 @@ import JsonLd from "../components/JsonLd";
 export const metadata: Metadata = {
   title: { absolute: "About British IPTV — Premium UK IPTV Service Provider" },
   description:
-    "Discover British IPTV: trusted by 25,000+ subscribers. We deliver 50,000+ live channels, 4K streaming, and 99.9% uptime. Learn our mission and why UK families choose us.",
-  alternates: { canonical: "https://iptv-british.com/about" },
+    "About British IPTV: an IPTV UK service with 50,000+ live channels, 4K streaming and 24/7 WhatsApp support. Our mission and why UK viewers choose us.",
+  alternates: { canonical: "https://www.iptv-british.com/about" },
   openGraph: {
     title: "About British IPTV — Premium UK IPTV Service",
-    description: "25,000+ subscribers trust us for 50,000+ live channels, 4K streaming, and exceptional support.",
-    url: "https://iptv-british.com/about",
+    description: "An IPTV UK service with 50,000+ live channels, 4K streaming and 24/7 WhatsApp support.",
+    url: "https://www.iptv-british.com/about",
   },
 };
 
 const stats = [
-  { icon: Users, value: "25,000+", label: "Active Subscribers" },
+  { icon: Users, value: "24/7", label: "WhatsApp Support" },
   { icon: Tv, value: "50,000+", label: "Live Channels" },
   { icon: Globe, value: "Worldwide", label: "Available In" },
   { icon: Shield, value: "99.9%", label: "Uptime" },
@@ -29,7 +29,7 @@ const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About British IPTV",
-  url: "https://iptv-british.com/about",
+  url: "https://www.iptv-british.com/about",
   description:
     "British IPTV is a premium IPTV provider offering 50,000+ live channels in 4K quality.",
 };
@@ -77,7 +77,7 @@ export default function AboutPage() {
             British IPTV was founded with a simple mission: make great TV accessible and affordable for everyone. We watched as satellite TV prices climbed year after year while the value offered to viewers stayed flat. Long contracts, expensive hardware, and a limited channel selection — that wasn&apos;t good enough.
           </p>
           <p className="text-zinc-300 leading-8">
-            We built a service from the ground up with a focus on reliability, picture quality, and value. Starting with a small base of UK viewers, we&apos;ve grown to serve over 25,000 active subscribers across the UK and worldwide.
+            We built a service from the ground up with a focus on reliability, picture quality, and value. We started with a small base of UK viewers and now serve customers across the UK and worldwide.
           </p>
           <p className="text-zinc-300 leading-8">
             Our infrastructure spans multiple data centres with automatic failover, ensuring you get a smooth, uninterrupted experience. We continuously add new channels, improve our apps support, and expand our VOD library based on customer feedback.
@@ -111,10 +111,10 @@ export default function AboutPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-br from-brand-950/40 to-zinc-900 border border-brand-900/30 rounded-2xl p-10 text-center">
+        <div className="bg-gradient-to-br from-brand-950/40 to-ink-800 border border-brand-900/30 rounded-2xl p-10 text-center">
           <h3 className="text-white font-bold text-2xl mb-3">Ready to join us?</h3>
           <p className="text-zinc-400 mb-7 max-w-md mx-auto">
-            Try the service free for 3 hours — no credit card required. See exactly why 25,000+ customers chose us.
+            Try the service free for 3 hours — no credit card required. See for yourself on your own TV.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

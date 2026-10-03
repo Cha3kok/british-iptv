@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ChevronLeft, Clock, Tag, ArrowRight } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug } from "../../lib/mdx";
+import { getImageDims } from "../../lib/image-dims";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import WhatsAppButton from "../../components/WhatsAppButton";
@@ -23,18 +25,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug);
   if (!post) return {};
 
+  const title = post.seoTitle ?? `${post.title} — British IPTV`;
+  const description = post.description ?? post.excerpt;
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: { absolute: title },
+    description,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: `https://iptv-british.com/blog/${post.slug}`,
+      title,
+      description,
+      url: `https://www.iptv-british.com/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.updated ?? post.date,
     },
-    alternates: { canonical: `https://iptv-british.com/blog/${post.slug}` },
+    alternates: { canonical: `https://www.iptv-british.com/blog/${post.slug}` },
   };
 }
 
@@ -55,9 +60,23 @@ function formatDate(iso: string) {
 }
 
 const mdxComponents = {
-  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img className="w-full rounded-2xl my-8 object-cover max-h-96" {...props} />
-  ),
+  img: ({ src, alt }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    const dims = typeof src === "string" ? getImageDims(src) : null;
+    if (!dims || typeof src !== "string") {
+      // eslint-disable-next-line @next/next/no-img-element
+      return <img className="w-full rounded-2xl my-8 object-cover max-h-96" src={src as string} alt={alt ?? ""} loading="lazy" />;
+    }
+    return (
+      <Image
+        src={src}
+        alt={alt ?? ""}
+        width={dims.width}
+        height={dims.height}
+        sizes="(max-width: 768px) 100vw, 768px"
+        className="w-full h-auto rounded-2xl my-8 object-cover max-h-96"
+      />
+    );
+  },
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2 className="text-xl font-bold text-white mt-10 mb-3" {...props} />
   ),
@@ -110,7 +129,7 @@ const mdxComponents = {
     <td className="py-3 px-4 text-zinc-300 text-sm" {...props} />
   ),
   CTA: ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <div className="my-8 bg-gradient-to-br from-brand-950/40 to-zinc-900 border border-brand-900/30 rounded-2xl p-6 text-center">
+    <div className="my-8 bg-gradient-to-br from-brand-950/40 to-ink-800 border border-brand-900/30 rounded-2xl p-6 text-center">
       <a
         href={href}
         target="_blank"
@@ -129,33 +148,38 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const allPosts = getAllPosts();
-  const related = allPosts
-    .filter((p) => p.slug !== post.slug && p.category === post.category)
-    .slice(0, 2);
+  // Same-category posts first, then the next posts in the list (wrapping round),
+  // so every guide receives links from several others — no orphans.
+  const idx = allPosts.findIndex((p) => p.slug === post.slug);
+  const others = [...allPosts.slice(idx + 1), ...allPosts.slice(0, idx)];
+  const related = [
+    ...others.filter((p) => p.category === post.category),
+    ...others.filter((p) => p.category !== post.category),
+  ].slice(0, 4);
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
-    description: post.excerpt,
-    image: `https://iptv-british.com${post.coverImage ?? "/og-image.png"}`,
+    description: post.description ?? post.excerpt,
+    image: `https://www.iptv-british.com${post.coverImage ?? "/og-image.png"}`,
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
-    url: `https://iptv-british.com/blog/${post.slug}`,
+    url: `https://www.iptv-british.com/blog/${post.slug}`,
     inLanguage: "en-GB",
-    mainEntityOfPage: `https://iptv-british.com/blog/${post.slug}`,
+    mainEntityOfPage: `https://www.iptv-british.com/blog/${post.slug}`,
     author: {
       "@type": "Organization",
       name: "British IPTV",
-      url: "https://iptv-british.com",
+      url: "https://www.iptv-british.com",
     },
     publisher: {
       "@type": "Organization",
       name: "British IPTV",
-      url: "https://iptv-british.com",
+      url: "https://www.iptv-british.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://iptv-british.com/logo.png",
+        url: "https://www.iptv-british.com/logo.png",
       },
     },
   };
@@ -168,19 +192,19 @@ export default async function BlogPostPage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://iptv-british.com",
+        item: "https://www.iptv-british.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://iptv-british.com/blog",
+        item: "https://www.iptv-british.com/blog",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: post.title,
-        item: `https://iptv-british.com/blog/${post.slug}`,
+        item: `https://www.iptv-british.com/blog/${post.slug}`,
       },
     ],
   };
@@ -223,21 +247,31 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Cover image */}
       {post.coverImage && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
-          <img
+          <Image
             src={post.coverImage}
             alt={post.coverAlt ?? post.title}
-            className="w-full rounded-2xl object-cover max-h-96"
+            width={getImageDims(post.coverImage)?.width ?? 1200}
+            height={getImageDims(post.coverImage)?.height ?? 630}
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+            className="w-full h-auto rounded-2xl object-cover max-h-96"
           />
         </div>
       )}
 
       {/* Article body */}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        {post.summary && (
+          <aside className="mb-10 rounded-2xl border border-brand-500/30 bg-brand-500/[0.07] p-6" aria-label="Quick answer">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-300">Quick answer</p>
+            <p className="text-base leading-relaxed text-zinc-200">{post.summary}</p>
+          </aside>
+        )}
         <MDXRemote source={post.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
 
         {/* CTA box */}
-        <div className="mt-14 bg-gradient-to-br from-brand-950/40 to-zinc-900 border border-brand-900/30 rounded-2xl p-8 text-center">
-          <h3 className="text-white font-bold text-xl mb-2">Ready to try it yourself?</h3>
+        <div className="mt-14 bg-gradient-to-br from-brand-950/40 to-ink-800 border border-brand-900/30 rounded-2xl p-8 text-center">
+          <p className="text-white font-bold text-xl mb-2">Ready to try it yourself?</p>
           <p className="text-zinc-400 text-sm mb-6">
             Get a free 3-hour trial — no credit card required. Our team sets it up for you.
           </p>
@@ -254,7 +288,7 @@ export default async function BlogPostPage({ params }: Props) {
               href="https://wa.me/212707711512?text=Hi%2C%20I%27d%20like%20more%20information"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+              className="bg-[#0e7a52] hover:bg-[#0b6a47] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
             >
               WhatsApp Us
             </a>
@@ -264,7 +298,7 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Related posts */}
         {related.length > 0 && (
           <div className="mt-14">
-            <h3 className="text-white font-bold text-lg mb-5">Related Articles</h3>
+            <h2 className="text-white font-bold text-lg mb-5">Related guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {related.map((p) => (
                 <Link

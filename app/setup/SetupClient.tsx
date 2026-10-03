@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, CheckCircle2, ExternalLink } from "lucide-react";
 
@@ -205,12 +205,27 @@ function StepItem({ step, index, total }: { step: Step; index: number; total: nu
 
 export default function SetupClient() {
   const [activeId, setActiveId] = useState(devices[0].id);
-  const active = devices.find((d) => d.id === activeId)!;
+
+  // Deep links: /setup#smart-tv opens that guide.
+  useEffect(() => {
+    const fromHash = () => {
+      const id = window.location.hash.slice(1);
+      if (devices.some((d) => d.id === id)) setActiveId(id);
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
+  }, []);
+
+  const select = (id: string) => {
+    setActiveId(id);
+    history.replaceState(null, "", `#${id}`);
+  };
 
   return (
-    <div className="min-h-screen bg-ink-950 text-white">
+    <div className="bg-ink-950 text-white">
       {/* Header */}
-      <div className="bg-ink-900 border-b border-white/5 pt-24 pb-12">
+      <div className="bg-ink-900 border-b border-white/5 pt-32 pb-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
@@ -222,10 +237,11 @@ export default function SetupClient() {
             Setup Guide
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">
-            Get started in minutes
+            IPTV setup guide for every device
           </h1>
           <p className="text-zinc-400 text-lg max-w-2xl">
-            Choose your device below for a step-by-step guide. No technical knowledge required.
+            Step-by-step instructions to get IPTV UK running on Amazon Firestick, Smart TV, Android,
+            iPhone and iPad, MAG boxes and Windows in under 5 minutes. No technical knowledge required.
           </p>
         </div>
       </div>
@@ -239,12 +255,17 @@ export default function SetupClient() {
             </p>
             <nav className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
               {devices.map((d) => (
-                <button
+                <a
                   key={d.id}
-                  onClick={() => setActiveId(d.id)}
+                  href={`#${d.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    select(d.id);
+                  }}
+                  aria-current={activeId === d.id ? "true" : undefined}
                   className={`flex-shrink-0 text-left px-4 py-3 rounded-xl text-sm transition-all ${
                     activeId === d.id
-                      ? "bg-brand-500 text-white font-semibold"
+                      ? "bg-brand-600 text-white font-semibold"
                       : "bg-ink-800 text-zinc-400 hover:text-white hover:bg-ink-700"
                   }`}
                 >
@@ -252,19 +273,28 @@ export default function SetupClient() {
                   <span className={`text-xs ${activeId === d.id ? "text-brand-100" : "text-zinc-600"}`}>
                     {d.subtitle}
                   </span>
-                </button>
+                </a>
               ))}
             </nav>
           </aside>
 
           {/* Guide content */}
-          <main className="flex-1 min-w-0">
-            <div className="bg-ink-800 border border-white/5 rounded-2xl p-6 sm:p-8">
+          <div className="flex-1 min-w-0">
+            {devices.map((device) => (
+            <section
+              key={device.id}
+              id={device.id}
+              hidden={device.id !== activeId}
+              aria-labelledby={`${device.id}-title`}
+              className="scroll-mt-32 bg-ink-800 border border-white/5 rounded-2xl p-6 sm:p-8"
+            >
               {/* Device header */}
               <div className="flex items-start justify-between gap-4 mb-8">
                 <div>
-                  <h2 className="text-2xl font-bold text-white">{active.name}</h2>
-                  <p className="text-zinc-400 text-sm mt-0.5">{active.subtitle}</p>
+                  <h2 id={`${device.id}-title`} className="text-2xl font-bold text-white">
+                    How to set up IPTV on {device.name}
+                  </h2>
+                  <p className="text-zinc-400 text-sm mt-0.5">{device.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium px-3 py-1.5 rounded-full flex-shrink-0">
                   <CheckCircle2 size={13} />
@@ -276,11 +306,11 @@ export default function SetupClient() {
               <div className="bg-ink-700 border border-white/5 rounded-xl p-4 flex items-center justify-between gap-4 mb-8">
                 <div>
                   <p className="text-zinc-500 text-xs mb-0.5">Recommended App</p>
-                  <p className="text-white font-semibold">{active.appName}</p>
+                  <p className="text-white font-semibold">{device.appName}</p>
                 </div>
-                {active.appUrl && (
+                {device.appUrl && (
                   <a
-                    href={active.appUrl}
+                    href={device.appUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-brand-400 hover:text-brand-300 text-sm font-medium transition-colors flex-shrink-0"
@@ -292,8 +322,8 @@ export default function SetupClient() {
 
               {/* Steps */}
               <div>
-                {active.steps.map((step, i) => (
-                  <StepItem key={i} step={step} index={i} total={active.steps.length} />
+                {device.steps.map((step, i) => (
+                  <StepItem key={i} step={step} index={i} total={device.steps.length} />
                 ))}
               </div>
 
@@ -301,26 +331,27 @@ export default function SetupClient() {
               <div className="flex justify-between mt-10 pt-6 border-t border-white/5">
                 <button
                   onClick={() => {
-                    const idx = devices.findIndex((d) => d.id === activeId);
-                    if (idx > 0) setActiveId(devices[idx - 1].id);
+                    const idx = devices.findIndex((d) => d.id === device.id);
+                    if (idx > 0) select(devices[idx - 1].id);
                   }}
-                  disabled={devices[0].id === activeId}
+                  disabled={devices[0].id === device.id}
                   className="flex items-center gap-1 text-sm text-zinc-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   <ChevronLeft size={16} /> Previous
                 </button>
                 <button
                   onClick={() => {
-                    const idx = devices.findIndex((d) => d.id === activeId);
-                    if (idx < devices.length - 1) setActiveId(devices[idx + 1].id);
+                    const idx = devices.findIndex((d) => d.id === device.id);
+                    if (idx < devices.length - 1) select(devices[idx + 1].id);
                   }}
-                  disabled={devices[devices.length - 1].id === activeId}
+                  disabled={devices[devices.length - 1].id === device.id}
                   className="flex items-center gap-1 text-sm text-zinc-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   Next <ChevronRight size={16} />
                 </button>
               </div>
-            </div>
+            </section>
+            ))}
 
             {/* Still stuck CTA */}
             <div className="mt-6 bg-ink-800 border border-white/5 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -332,12 +363,12 @@ export default function SetupClient() {
                 href="https://wa.me/212707711512?text=Hi%2C%20I%20need%20help%20setting%20up%20my%20IPTV"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+                className="flex-shrink-0 bg-[#0e7a52] hover:bg-[#0b6a47] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
               >
                 WhatsApp Support
               </a>
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </div>

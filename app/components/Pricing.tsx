@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
@@ -9,6 +10,7 @@ const deviceOptions = [1, 2, 3, 4];
 const plans = [
   {
     name: "1 Month",
+    months: 1,
     basePrice: 15,
     devicePrices: { 1: 15, 2: 20, 3: 25, 4: 30 },
     period: "one-off",
@@ -17,6 +19,7 @@ const plans = [
   },
   {
     name: "3 Months",
+    months: 3,
     basePrice: 35,
     devicePrices: { 1: 35, 2: 45, 3: 55, 4: 65 },
     period: "every 3 months",
@@ -25,6 +28,7 @@ const plans = [
   },
   {
     name: "6 Months",
+    months: 6,
     basePrice: 45,
     devicePrices: { 1: 45, 2: 60, 3: 75, 4: 90 },
     period: "every 6 months",
@@ -34,6 +38,7 @@ const plans = [
   },
   {
     name: "12 Months",
+    months: 12,
     basePrice: 60,
     devicePrices: { 1: 60, 2: 80, 3: 100, 4: 120 },
     period: "per year",
@@ -42,6 +47,7 @@ const plans = [
   },
   {
     name: "24 Months",
+    months: 24,
     basePrice: 110,
     devicePrices: { 1: 110, 2: 145, 3: 180, 4: 215 },
     period: "every 2 years",
@@ -68,7 +74,7 @@ const highlights = [
   { icon: "🎥", label: "4K / HD / FHD / UHD Quality" },
   { icon: "🔄", label: "Free & Auto Updates" },
   { icon: "📅", label: "Available EPG" },
-  { icon: "↩️", label: "7-Day Refund" },
+  { icon: "↩️", label: "48-Hour Refund" },
   { icon: "🎧", label: "24/7 Free Support" },
   { icon: "🔒", label: "Privacy Protection & Built-in VPN" },
 ];
@@ -166,6 +172,12 @@ export default function Pricing() {
                   Subscribe Now
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </a>
+                <Link
+                  href={`/product/${plan.months}-month-british-iptv`}
+                  className="mt-3 text-center text-xs text-zinc-400 underline-offset-4 transition-colors hover:text-white hover:underline"
+                >
+                  {plan.name} plan details
+                </Link>
               </div>
             );
 

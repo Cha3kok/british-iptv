@@ -41,7 +41,7 @@ export const products: Product[] = [
     highlight: false,
     metaTitle: "1 Month IPTV UK Subscription – £15 | British IPTV",
     metaDescription:
-      "Get 1 month of British IPTV for just £15. 50,000+ live channels, 4K Ultra HD, 7-day catch-up, zero buffering. No contract. Instant activation. Free 3-hour trial available.",
+      "1 month IPTV UK subscription for £15: 50,000+ live channels, 4K Ultra HD and 7-day catch-up. No contract, instant activation, free 3-hour trial.",
     h1: "1 Month British IPTV — £15 One-Off Payment",
     heroSubtitle:
       "The perfect way to try British IPTV risk-free. Full access to 50,000+ live channels, 4K streaming, and 7-day catch-up TV for just £15. No contracts, no recurring charges.",
@@ -82,7 +82,7 @@ export const products: Product[] = [
       },
       {
         q: "Is there a refund if I'm not satisfied?",
-        a: "Yes. We offer a 7-day refund guarantee on all plans. If you're not happy for any reason within the first 7 days, contact us on WhatsApp and we'll refund you without question.",
+        a: "Yes. If the service isn't working as described, you can request a refund within 48 hours of purchase — message us on WhatsApp. If a technical problem can't be fixed within 72 hours of reporting it, you get a pro-rated refund for the unused time. See our refund policy for full details.",
       },
     ],
     testimonials: [
@@ -114,7 +114,7 @@ export const products: Product[] = [
     highlight: false,
     metaTitle: "3 Month IPTV UK Subscription – £35 | British IPTV",
     metaDescription:
-      "3 months of British IPTV for £35 — that's under £12/month. 50,000+ channels, 4K Ultra HD, 7-day catch-up. No contract, instant activation. Try free for 3 hours.",
+      "3 month IPTV UK subscription for £35 (under £12/month): 50,000+ channels, 4K Ultra HD and 7-day catch-up. No contract, instant activation.",
     h1: "3 Months British IPTV — £35 One-Off Payment",
     heroSubtitle:
       "Three months of premium British IPTV for just £35 — saving you £10 vs rolling monthly. Ideal for casual viewers who want reliable access without the cost of a long-term subscription.",
@@ -151,7 +151,7 @@ export const products: Product[] = [
       },
       {
         q: "What happens if I have technical issues during my 3 months?",
-        a: "Our 24/7 WhatsApp support is available throughout your entire subscription. Most issues are resolved within minutes. We also offer a 7-day refund guarantee if you're unhappy for any reason.",
+        a: "Our 24/7 WhatsApp support is available throughout your entire subscription. Most issues are resolved within minutes. If something isn't working, you can request a refund within 48 hours of purchase under our refund policy.",
       },
     ],
     testimonials: [
@@ -184,7 +184,7 @@ export const products: Product[] = [
     highlight: true,
     metaTitle: "6 Month IPTV UK Subscription – £45 | British IPTV",
     metaDescription:
-      "6 months of British IPTV for just £45 — only £7.50/month. Most popular plan. 50,000+ channels, 4K Ultra HD, 7-day catch-up, anti-freeze technology. Instant setup.",
+      "6 month IPTV UK subscription for £45 (£7.50/month), our most popular plan: 50,000+ channels, 4K Ultra HD, 7-day catch-up and instant setup.",
     h1: "6 Months British IPTV — £45 One-Off Payment",
     heroSubtitle:
       "Our most popular plan for good reason. Six months of premium British IPTV for just £45 — that's £7.50 per month. The perfect balance of savings and flexibility for regular viewers.",
@@ -257,7 +257,7 @@ export const products: Product[] = [
     highlight: false,
     metaTitle: "12 Month IPTV UK Subscription – £5/Month | British IPTV",
     metaDescription:
-      "12 months of British IPTV for just £60 — that's £5 per month. Full year of 50,000+ channels, 4K streaming, 7-day catch-up. Best value for committed viewers. Instant setup.",
+      "12 month IPTV UK subscription for £60 — just £5 a month for 50,000+ channels, 4K streaming and 7-day catch-up. No contract, instant setup.",
     h1: "12 Months British IPTV — £60 One-Off Payment",
     heroSubtitle:
       "A full year of premium British IPTV for just £60. At £5 per month, this is the plan for viewers who know they love IPTV and want guaranteed access across every sports season and TV schedule for the year ahead.",
@@ -331,7 +331,7 @@ export const products: Product[] = [
     highlight: false,
     metaTitle: "24 Month IPTV UK Subscription – £110 | British IPTV",
     metaDescription:
-      "24 months of British IPTV for £110 — just £4.58/month. Best value plan. 50,000+ channels, 4K streaming, 7-day catch-up. Two full years with one payment. Instant setup.",
+      "24 month IPTV UK subscription for £110 — only £4.58 a month. Two years of 50,000+ channels, 4K streaming and 7-day catch-up in one payment.",
     h1: "24 Months British IPTV — £110 One-Off Payment",
     heroSubtitle:
       "The best value IPTV subscription available. Two full years of premium British IPTV for £110 — just £4.58 per month. One payment, two years of 50,000+ channels, 4K streaming, and zero hassle.",

@@ -1,4 +1,16 @@
+import Link from "next/link";
 import SectionHeader from "./SectionHeader";
+
+// Device card → matching guide on /setup (ids from app/setup/SetupClient.tsx)
+const setupAnchor: Record<string, string> = {
+  "Amazon Firestick": "#firestick",
+  "Smart TV": "#smarttv",
+  "Android Box": "#android",
+  "iPhone & iPad": "#ios",
+  "Android Phone": "#android",
+  "MAG Box": "#mag",
+  "Windows PC": "#windows",
+};
 
 const devices = [
   {
@@ -127,8 +139,10 @@ export default function Devices() {
 
         <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
           {devices.map((device, i) => (
-            <div
+            <Link
               key={device.name}
+              href={`/setup${setupAnchor[device.name] ?? ""}`}
+              aria-label={`${device.name} IPTV setup guide`}
               className="reveal spotlight group flex flex-col items-center gap-4 rounded-3xl border border-white/[0.07] bg-ink-800/70 p-6 text-center backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:border-brand-500/40 hover:shadow-[0_20px_60px_-20px_rgba(76,111,255,0.45)]"
               style={{ "--delay": `${i * 60}ms` } as React.CSSProperties}
             >
@@ -139,7 +153,7 @@ export default function Devices() {
                 <p className="text-sm font-semibold text-white">{device.name}</p>
                 <p className="mt-0.5 text-xs text-zinc-500">{device.desc}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

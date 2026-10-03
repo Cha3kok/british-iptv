@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: { absolute: "DMCA Policy — British IPTV | Copyright Notices" },
   description:
     "British IPTV respects intellectual property rights. Read our DMCA policy to learn how to submit a copyright infringement notice or a counter-notice.",
-  alternates: { canonical: "https://iptv-british.com/dmca" },
+  alternates: { canonical: "https://www.iptv-british.com/dmca" },
   openGraph: {
     title: "DMCA Policy — British IPTV",
     description: "How to submit a copyright infringement notice or counter-notice.",
-    url: "https://iptv-british.com/dmca",
+    url: "https://www.iptv-british.com/dmca",
   },
 };
 
@@ -17,6 +17,7 @@ export default function DmcaPolicy() {
   return (
     <LegalPage
       badge="Legal"
+      path="/dmca"
       title="DMCA Policy"
       subtitle="We respect the intellectual property rights of others and respond promptly to valid copyright notices."
       lastUpdated="3 October 2026"

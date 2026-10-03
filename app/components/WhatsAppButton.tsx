@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
           >
             <X size={12} />
           </button>
-          <p className="font-bold text-xs text-zinc-500 mb-1">iptv-british.com</p>
+          <p className="font-bold text-xs text-zinc-700 mb-1">iptv-british.com</p>
           <p className="font-medium">💬 I want more information</p>
           {/* Tail */}
           <span className="absolute -bottom-2 right-6 w-3 h-3 bg-white rotate-45 shadow-sm" />

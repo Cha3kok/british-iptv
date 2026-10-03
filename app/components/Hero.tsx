@@ -7,7 +7,7 @@ const stats = [
   { to: 50000, suffix: "+", label: "Live channels" },
   { to: 200000, suffix: "+", label: "Movies & series" },
   { to: 99.9, decimals: 1, suffix: "%", label: "Uptime" },
-  { to: 4.9, decimals: 1, suffix: "/5", label: "Customer rating" },
+  { to: 24, suffix: "/7", label: "WhatsApp support" },
 ];
 
 const guide = [
@@ -131,15 +131,13 @@ export default function Hero() {
           </div>
 
           <h1
-            className="hero-in mt-7 text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
-            style={delay(80)}
+            className="mt-7 text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
           >
             The Best <span className="text-gradient">IPTV UK</span> Experience
           </h1>
 
           <p
-            className="hero-in mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-xl lg:mx-0"
-            style={delay(160)}
+            className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400 sm:text-xl lg:mx-0"
           >
             The UK IPTV subscription built for British viewers. Stream 50,000+ live channels and 200,000+
             movies and series in crystal-clear 4K on any device — no dish, no contract, no buffering.

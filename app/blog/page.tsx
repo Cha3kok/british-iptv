@@ -2,23 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 import { getAllPosts } from "../lib/mdx";
-
-export const dynamic = "force-dynamic";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
 import JsonLd from "../components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: { absolute: "IPTV UK Guides: Setup, Apps & Tips | British IPTV" },
   description:
-    "IPTV guides, tips, troubleshooting and comparisons. Learn how to get the most from your British IPTV subscription.",
+    "IPTV UK guides: how to choose a provider, set up Firestick, Smart TV and MAG, fix buffering, compare satellite TV and watch live sport without a dish.",
   openGraph: {
-    title: "Blog — British IPTV",
-    description: "IPTV guides, tips, troubleshooting and comparisons.",
-    url: "https://iptv-british.com/blog",
+    title: "IPTV UK Guides: Setup, Apps & Tips | British IPTV",
+    description: "Setup guides, app comparisons and buying advice for IPTV in the UK.",
+    url: "https://www.iptv-british.com/blog",
   },
-  alternates: { canonical: "https://iptv-british.com/blog" },
+  alternates: { canonical: "https://www.iptv-british.com/blog" },
 };
 
 const categoryColors: Record<string, string> = {
@@ -49,13 +47,13 @@ export default function BlogPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://iptv-british.com",
+        item: "https://www.iptv-british.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://iptv-british.com/blog",
+        item: "https://www.iptv-british.com/blog",
       },
     ],
   };
@@ -66,11 +64,11 @@ export default function BlogPage() {
     name: "British IPTV Blog",
     description:
       "IPTV guides, tips, troubleshooting and comparisons. Learn how to get the most from your British IPTV subscription.",
-    url: "https://iptv-british.com/blog",
+    url: "https://www.iptv-british.com/blog",
     mainEntity: posts.map((post) => ({
       "@type": "Article",
       headline: post.title,
-      url: `https://iptv-british.com/blog/${post.slug}`,
+      url: `https://www.iptv-british.com/blog/${post.slug}`,
       datePublished: post.date,
       description: post.excerpt,
     })),
@@ -89,7 +87,7 @@ export default function BlogPage() {
             Blog
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">
-            IPTV Guides & Tips
+            IPTV UK Guides & Tips
           </h1>
           <p className="text-zinc-400 text-lg max-w-2xl">
             Everything you need to get the most from your IPTV service — setup guides, troubleshooting, app reviews, and more.

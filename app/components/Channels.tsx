@@ -1,4 +1,5 @@
 import SectionHeader from "./SectionHeader";
+import ClientClones from "./ClientClones";
 
 const categories = [
   { emoji: "🇬🇧", name: "UK Channels", count: "800+" },
@@ -20,18 +21,26 @@ const rowB = [
   "Reality TV", "Comedy", "Drama", "Nature", "History", "Arabic & Asian",
 ];
 
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-brand-500/50 hover:text-white">
+      {children}
+    </span>
+  );
+}
+
 function Marquee({ items, reverse }: { items: string[]; reverse?: boolean }) {
   return (
     <div className="mask-x pause-on-hover flex overflow-hidden">
       <div className={`flex shrink-0 gap-3 pr-3 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}>
-        {[...items, ...items].map((item, i) => (
-          <span
-            key={`${item}-${i}`}
-            className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-brand-500/50 hover:text-white"
-          >
-            {item}
-          </span>
+        {items.map((item) => (
+          <Pill key={item}>{item}</Pill>
         ))}
+        <ClientClones>
+          {items.map((item) => (
+            <Pill key={item}>{item}</Pill>
+          ))}
+        </ClientClones>
       </div>
     </div>
   );

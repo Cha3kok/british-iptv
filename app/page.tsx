@@ -17,8 +17,9 @@ import OfferBanner from "./components/OfferBanner";
 import SocialProof from "./components/SocialProof";
 import FinalCTA from "./components/FinalCTA";
 import { homeFaqs } from "./lib/faqs";
+import { SITE_URL } from "./lib/site";
 
-const BASE_URL = "https://iptv-british.com";
+const BASE_URL = SITE_URL;
 
 const TITLE = "IPTV UK 2026 – Best UK IPTV Subscription | British IPTV";
 const DESCRIPTION =
@@ -97,6 +98,7 @@ const schema = {
           price: p.price,
           priceCurrency: "GBP",
           availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
           url: `${BASE_URL}/product/${p.slug}`,
           seller: { "@id": `${BASE_URL}/#organization` },
         })),
@@ -119,7 +121,7 @@ export default function Home() {
     <>
       <JsonLd data={schema} />
       <OfferBanner />
-      <Navbar />
+      <Navbar withBanner />
       <main>
         <Hero />
         <IptvUkGuide />

@@ -8,6 +8,9 @@ export type PostMeta = {
   slug: string;
   title: string;
   excerpt: string;
+  seoTitle?: string;
+  description?: string;
+  summary?: string;
   category: string;
   date: string;
   updated?: string;
@@ -32,6 +35,9 @@ export function getAllPosts(): PostMeta[] {
         slug,
         title: data.title as string,
         excerpt: data.excerpt as string,
+        seoTitle: data.seoTitle as string | undefined,
+        description: data.description as string | undefined,
+        summary: data.summary as string | undefined,
         category: data.category as string,
         date: data.date as string,
         updated: data.updated as string | undefined,
@@ -54,6 +60,9 @@ export function getPostBySlug(slug: string): PostWithContent | null {
     slug,
     title: data.title as string,
     excerpt: data.excerpt as string,
+    seoTitle: data.seoTitle as string | undefined,
+    description: data.description as string | undefined,
+    summary: data.summary as string | undefined,
     category: data.category as string,
     date: data.date as string,
     updated: data.updated as string | undefined,

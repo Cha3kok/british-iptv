@@ -79,7 +79,7 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(links).map(([group, items]) => (
             <div key={group}>
-              <h4 className="text-white font-semibold text-sm mb-4">{group}</h4>
+              <p className="text-white font-semibold text-sm mb-4">{group}</p>
               <ul className="space-y-2.5">
                 {items.map((item) => (
                   <li key={item.label}>

@@ -10,13 +10,13 @@ import { products } from "../lib/products";
 export const metadata: Metadata = {
   title: { absolute: "IPTV UK Plans & Prices – From £15 | British IPTV" },
   description:
-    "Compare all British IPTV subscription plans from £15. 50,000+ channels, 4K Ultra HD, 7-day catch-up. Choose 1, 3, 6, 12, or 24 months. No contract. Instant activation.",
-  alternates: { canonical: "https://iptv-british.com/product" },
+    "Compare IPTV UK plans from £15: 1, 3, 6, 12 or 24 months with 50,000+ channels, 4K Ultra HD and 7-day catch-up. No contract, instant activation.",
+  alternates: { canonical: "https://www.iptv-british.com/product" },
   openGraph: {
     title: "IPTV UK Plans & Prices – From £15 | British IPTV",
     description:
       "50,000+ channels, 4K streaming, 7-day catch-up. Plans from £15. Compare 1, 3, 6, 12 and 24-month British IPTV subscriptions.",
-    url: "https://iptv-british.com/product",
+    url: "https://www.iptv-british.com/product",
   },
 };
 
@@ -26,7 +26,7 @@ const catalogSchema = {
   name: "British IPTV Subscription",
   description:
     "Premium British IPTV subscription with 50,000+ live channels, 200,000+ VODs, 4K Ultra HD quality, 7-day catch-up TV, and 24/7 support.",
-  image: "https://iptv-british.com/og-image.png",
+  image: "https://www.iptv-british.com/og-image.png",
   brand: { "@type": "Brand", name: "British IPTV" },
   offers: products.map((p) => ({
     "@type": "Offer",
@@ -34,7 +34,8 @@ const catalogSchema = {
     price: p.price.toString(),
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: `https://iptv-british.com/product/${p.slug}`,
+    priceValidUntil: "2026-12-31",
+    url: `https://www.iptv-british.com/product/${p.slug}`,
   })),
 };
 
@@ -42,8 +43,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://iptv-british.com" },
-    { "@type": "ListItem", position: 2, name: "Product", item: "https://iptv-british.com/product" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.iptv-british.com" },
+    { "@type": "ListItem", position: 2, name: "Product", item: "https://www.iptv-british.com/product" },
   ],
 };
 
@@ -71,9 +72,9 @@ const trustPoints = [
   },
   {
     icon: "🔒",
-    title: "7-Day Refund Guarantee",
+    title: "48-Hour Refund Promise",
     description:
-      "Not happy within the first 7 days? We'll refund you, no questions asked. We're that confident in the quality of our service.",
+      "If the service doesn't work as described, request a refund within 48 hours of purchase. Faults we can't fix within 72 hours get a pro-rated refund.",
   },
   {
     icon: "🌍",
@@ -99,11 +100,44 @@ const devicesBySlug: Record<string, string> = {
   "24-month-british-iptv": "Up to 4",
 };
 
+
+// Prices per number of simultaneous connections (matches components/Pricing.tsx).
+const devicePriceRows = [
+  { plan: "1 month", prices: [15, 20, 25, 30] },
+  { plan: "3 months", prices: [35, 45, 55, 65] },
+  { plan: "6 months", prices: [45, 60, 75, 90] },
+  { plan: "12 months", prices: [60, 80, 100, 120] },
+  { plan: "24 months", prices: [110, 145, 180, 215] },
+];
+
+const planChooser = [
+  { who: "Trying IPTV for the first time", plan: "1 month — £15", why: "Lowest commitment. Test the service on your own TV and broadband for a full month after the free trial." },
+  { who: "Watching a season or a short stay in the UK", plan: "3 or 6 months — £35 / £45", why: "Covers a football half-season or a few months abroad, at £7.50–£11.67 a month." },
+  { who: "Replacing satellite or cable for good", plan: "12 months — £60", why: "Just £5 a month — the best balance of price and flexibility for a household that watches TV every day." },
+  { who: "Set it and forget it", plan: "24 months — £110", why: "The lowest monthly price (£4.58) and no renewals for two years." },
+];
+
+const planFaqs = [
+  { q: "What's the difference between the IPTV UK plans?", a: "Nothing except length and price. Every plan includes the same 50,000+ live channels, 200,000+ movies and series, 4K quality, 7-day catch-up, EPG and 24/7 WhatsApp support." },
+  { q: "How many devices can I use?", a: "You choose 1, 2, 3 or 4 simultaneous connections when you subscribe. Each extra device adds to the price — see the table above — and each connection can stream on a different TV, phone or tablet at the same time." },
+  { q: "Is there a contract?", a: "No. There is no minimum contract — you pay for the plan length you choose, and you can stop at the end of any plan." },
+  { q: "How quickly is my subscription activated?", a: "Usually within minutes of payment. We send your M3U link or Xtream Codes login on WhatsApp, and our setup guides cover every device." },
+  { q: "Can I try before I buy?", a: "Yes. Every plan can be tested first with a free 3-hour trial — no credit card required. Message us on WhatsApp to start it." },
+  { q: "What is your refund policy?", a: "If the service doesn't work as described, you can request a refund within 48 hours of purchase. Technical faults we can't fix within 72 hours of reporting qualify for a pro-rated refund. Full details are in our refund policy." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: planFaqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+
 export default function ProductCatalogPage() {
   return (
     <>
       <JsonLd data={catalogSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       <Navbar />
 
       <main className="bg-ink-900 pt-[100px]">
@@ -129,11 +163,11 @@ export default function ProductCatalogPage() {
             All plans include the same premium features — 50,000+ channels, 4K quality, 7-day catch-up. The only difference is how long you subscribe and how much you save.
           </p>
           <div className="flex items-center justify-center gap-6 flex-wrap text-sm text-zinc-400">
-            <span>⭐ 4.9 / 2,847 reviews</span>
+            <span>⭐ Free 3-hour trial</span>
             <span className="text-zinc-700">|</span>
             <span>✅ No contracts</span>
             <span className="text-zinc-700">|</span>
-            <span>🔒 7-day refund</span>
+            <span>🔒 48-hour refund</span>
           </div>
         </section>
 
@@ -257,7 +291,7 @@ export default function ProductCatalogPage() {
         </section>
 
         {/* Comparison Table */}
-        <section className="py-20 px-4 bg-[#0d0d0d] border-y border-white/5">
+        <section className="py-20 px-4 bg-ink-950 border-y border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -322,7 +356,7 @@ export default function ProductCatalogPage() {
                       <td
                         key={p.slug}
                         className={`text-center text-sm font-semibold py-3.5 px-3 ${
-                          p.highlight ? "text-brand-400" : "text-brand-400/80"
+                          p.highlight ? "text-brand-300" : "text-brand-300"
                         }`}
                       >
                         {monthlyEquivalents[p.slug]}
@@ -391,8 +425,78 @@ export default function ProductCatalogPage() {
           </div>
         </section>
 
+        {/* Which plan */}
+        <section className="py-20 px-4 bg-ink-950 border-y border-white/5" aria-labelledby="choose-plan">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">Plan guide</p>
+              <h2 id="choose-plan" className="text-3xl sm:text-4xl font-bold text-white">
+                Which IPTV UK plan should I choose?
+              </h2>
+              <p className="text-zinc-400 mt-4 max-w-2xl mx-auto">
+                All plans include exactly the same channels and features. Longer plans simply cost less per month — start
+                short if you&apos;re new to IPTV, and move to a longer plan once you&apos;re happy.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {planChooser.map((c) => (
+                <div key={c.who} className="bg-ink-800 border border-white/5 rounded-2xl p-6">
+                  <p className="text-zinc-400 text-sm">{c.who}</p>
+                  <h3 className="text-white font-bold text-lg mt-1">{c.plan}</h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mt-2">{c.why}</p>
+                </div>
+              ))}
+            </div>
+
+            <h2 className="text-2xl font-bold text-white mt-16 mb-6 text-center">IPTV UK prices by number of devices</h2>
+            <div className="overflow-x-auto rounded-2xl border border-white/[0.07] bg-ink-900">
+              <table className="w-full min-w-[520px] text-sm">
+                <caption className="sr-only">British IPTV prices by plan length and number of simultaneous devices</caption>
+                <thead>
+                  <tr className="text-xs uppercase tracking-wider text-zinc-400">
+                    <th scope="col" className="px-5 py-4 text-left font-medium">Plan</th>
+                    {[1, 2, 3, 4].map((d) => (
+                      <th key={d} scope="col" className="px-5 py-4 text-right font-medium">
+                        {d} {d === 1 ? "device" : "devices"}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {devicePriceRows.map((r) => (
+                    <tr key={r.plan} className="border-t border-white/5">
+                      <th scope="row" className="px-5 py-3.5 text-left font-medium text-zinc-200">{r.plan}</th>
+                      {r.prices.map((p, i) => (
+                        <td key={i} className="px-5 py-3.5 text-right text-white">£{p}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-zinc-400 text-xs mt-3 text-center">No contract and no setup fee.</p>
+
+            <h2 className="text-2xl font-bold text-white mt-16 mb-6 text-center">Plan questions</h2>
+            <div className="space-y-3">
+              {planFaqs.map((f) => (
+                <details key={f.q} className="group bg-ink-800 border border-white/5 rounded-2xl px-6 py-5 open:border-brand-500/30">
+                  <summary className="cursor-pointer list-none font-medium text-white flex justify-between gap-4">
+                    {f.q}
+                    <span className="text-brand-300 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p className="text-zinc-400 text-sm leading-relaxed mt-3">{f.a}</p>
+                </details>
+              ))}
+            </div>
+            <p className="text-zinc-400 text-sm mt-6 text-center">
+              Read the full <Link href="/refund-policy" className="text-brand-300 underline underline-offset-2">refund policy</Link> or the{" "}
+              <Link href="/blog/iptv-subscription-uk" className="text-brand-300 underline underline-offset-2">IPTV subscription UK guide</Link>.
+            </p>
+          </div>
+        </section>
+
         {/* Bottom CTA */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0d0d0d] to-ink-900 border-t border-white/5">
+        <section className="py-20 px-4 bg-gradient-to-b from-ink-950 to-ink-900 border-t border-white/5">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-4">
               Not Sure Yet?

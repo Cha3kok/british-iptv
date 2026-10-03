@@ -23,11 +23,11 @@ export async function generateMetadata({
   return {
     title: { absolute: product.metaTitle },
     description: product.metaDescription,
-    alternates: { canonical: `https://iptv-british.com/product/${slug}` },
+    alternates: { canonical: `https://www.iptv-british.com/product/${slug}` },
     openGraph: {
       title: product.metaTitle,
       description: product.metaDescription,
-      url: `https://iptv-british.com/product/${slug}`,
+      url: `https://www.iptv-british.com/product/${slug}`,
     },
   };
 }
@@ -46,7 +46,7 @@ const whatsIncluded = [
   "24/7 Support",
   "Free Setup Help",
   "VPN Compatible",
-  "7-Day Refund Guarantee",
+  "48-Hour Refund if It Doesn't Work",
 ];
 
 function getMonths(slug: string): string {
@@ -69,7 +69,7 @@ export default async function ProductPage({
   const product = getProduct(slug);
   if (!product) notFound();
 
-  const relatedProducts = getRelatedProducts(slug, 3);
+  const relatedProducts = getRelatedProducts(slug, 4);
   const waSubscribeLink = `https://wa.me/212707711512?text=${encodeURIComponent(product.whatsappMessage)}`;
 
   const productSchema = {
@@ -77,14 +77,15 @@ export default async function ProductPage({
     "@type": "Product",
     name: product.name,
     description: product.metaDescription,
-    image: "https://iptv-british.com/og-image.png",
+    image: "https://www.iptv-british.com/og-image.png",
     brand: { "@type": "Brand", name: "British IPTV" },
     offers: {
       "@type": "Offer",
       price: product.price.toString(),
       priceCurrency: "GBP",
       availability: "https://schema.org/InStock",
-      url: `https://iptv-british.com/product/${product.slug}`,
+      priceValidUntil: "2026-12-31",
+      url: `https://www.iptv-british.com/product/${product.slug}`,
     },
   };
 
@@ -92,13 +93,13 @@ export default async function ProductPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://iptv-british.com" },
-      { "@type": "ListItem", position: 2, name: "Product", item: "https://iptv-british.com/product" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.iptv-british.com" },
+      { "@type": "ListItem", position: 2, name: "Product", item: "https://www.iptv-british.com/product" },
       {
         "@type": "ListItem",
         position: 3,
         name: product.name,
-        item: `https://iptv-british.com/product/${product.slug}`,
+        item: `https://www.iptv-british.com/product/${product.slug}`,
       },
     ],
   };
@@ -153,8 +154,7 @@ export default async function ProductPage({
                       <Star key={i} size={15} className="fill-brand-400 text-brand-400" />
                     ))}
                   </div>
-                  <span className="text-white font-bold text-sm">4.9</span>
-                  <span className="text-zinc-500 text-sm">/ 2,847 reviews</span>
+                  <span className="text-zinc-400 text-sm">Try it free for 3 hours before you buy</span>
                 </div>
 
                 {/* CTAs */}
@@ -224,7 +224,7 @@ export default async function ProductPage({
         </section>
 
         {/* What's Included */}
-        <section className="py-20 px-4 bg-[#0d0d0d] border-y border-white/5">
+        <section className="py-20 px-4 bg-ink-950 border-y border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -279,7 +279,7 @@ export default async function ProductPage({
         </section>
 
         {/* Plan Highlights */}
-        <section className="py-16 px-4 bg-[#0d0d0d] border-y border-white/5">
+        <section className="py-16 px-4 bg-ink-950 border-y border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
@@ -336,7 +336,7 @@ export default async function ProductPage({
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 bg-[#0d0d0d] border-y border-white/5">
+        <section className="py-20 px-4 bg-ink-950 border-y border-white/5">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">
@@ -394,7 +394,7 @@ export default async function ProductPage({
         </section>
 
         {/* Related Plans */}
-        <section className="py-16 px-4 bg-[#0d0d0d] border-t border-white/5">
+        <section className="py-16 px-4 bg-ink-950 border-t border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
               <p className="text-brand-400 text-sm font-semibold uppercase tracking-widest mb-3">

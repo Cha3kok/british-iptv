@@ -4,11 +4,11 @@ import LegalPage from "../components/LegalPage";
 export const metadata: Metadata = {
   title: { absolute: "Privacy Policy — British IPTV | Your Data Protection" },
   description: "Learn how British IPTV collects, uses, and protects your personal data. We prioritize your privacy and security. Full transparency on data handling.",
-  alternates: { canonical: "https://iptv-british.com/privacy-policy" },
+  alternates: { canonical: "https://www.iptv-british.com/privacy-policy" },
   openGraph: {
     title: "Privacy Policy — British IPTV",
     description: "How we protect and use your personal data.",
-    url: "https://iptv-british.com/privacy-policy",
+    url: "https://www.iptv-british.com/privacy-policy",
   },
 };
 
@@ -16,6 +16,7 @@ export default function PrivacyPolicy() {
   return (
     <LegalPage
       badge="Legal"
+      path="/privacy-policy"
       title="Privacy Policy"
       subtitle="How we collect, use, and protect your personal information."
       lastUpdated="1 January 2025"

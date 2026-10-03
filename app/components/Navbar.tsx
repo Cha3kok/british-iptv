@@ -13,7 +13,8 @@ const links = [
   { label: "Setup", href: "/setup" },
 ];
 
-export default function Navbar() {
+/** `withBanner`: leave room for the fixed OfferBanner (home page only). */
+export default function Navbar({ withBanner = false }: { withBanner?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 mt-[42px] px-3 sm:px-6">
+    <nav className={`fixed inset-x-0 top-0 z-50 px-3 sm:px-6 ${withBanner ? "mt-[42px]" : ""}`}>
       <div
         className={`mx-auto max-w-7xl rounded-2xl border transition-all duration-500 ${
           scrolled || open

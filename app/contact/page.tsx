@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: { absolute: "Contact British IPTV Support — 24/7 WhatsApp & Email" },
   description:
     "Get instant help from British IPTV support. Available 24/7 via WhatsApp or email for setup, billing, and technical issues. Typical response: under 5 minutes.",
-  alternates: { canonical: "https://iptv-british.com/contact" },
+  alternates: { canonical: "https://www.iptv-british.com/contact" },
   openGraph: {
     title: "Contact British IPTV — 24/7 Support",
     description: "Reach our support team instantly via WhatsApp or email.",
-    url: "https://iptv-british.com/contact",
+    url: "https://www.iptv-british.com/contact",
   },
 };
 
@@ -21,7 +21,7 @@ const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact British IPTV",
-  url: "https://iptv-british.com/contact",
+  url: "https://www.iptv-british.com/contact",
   description: "Contact British IPTV support via WhatsApp or email.",
 };
 
@@ -111,7 +111,7 @@ export default function ContactPage() {
                 rel={ch.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className={`mt-auto self-start font-semibold text-sm px-5 py-2.5 rounded-full transition-colors ${
                   ch.highlight
-                    ? "bg-[#25D366] hover:bg-[#20bd5a] text-white"
+                    ? "bg-[#0e7a52] hover:bg-[#0b6a47] text-white"
                     : "bg-brand-500 hover:bg-brand-400 text-white"
                 }`}
               >

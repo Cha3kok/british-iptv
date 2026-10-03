@@ -1,6 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import SectionHeader from "./SectionHeader";
-import CountUp from "./CountUp";
+import ClientClones from "./ClientClones";
 
 const reviews = [
   {
@@ -106,15 +106,13 @@ function ReviewCard({ r }: { r: (typeof reviews)[number] }) {
         </span>
       </div>
       <Stars count={r.rating} />
-      <h4 className="mb-2 mt-3 text-sm font-semibold text-white">{r.title}</h4>
+      <h3 className="mb-2 mt-3 text-sm font-semibold text-white">{r.title}</h3>
       <p className="text-sm leading-relaxed text-zinc-400">{r.body}</p>
     </div>
   );
 }
 
 export default function Testimonials() {
-  const totalReviews = 2847;
-  const avgRating = 4.9;
   const half = Math.ceil(reviews.length / 2);
   const rows = [reviews.slice(0, half), reviews.slice(half)];
 
@@ -126,32 +124,19 @@ export default function Testimonials() {
           eyebrow="Customer Reviews"
           title={
             <>
-              Loved by <span className="text-gradient">thousands</span> across the UK
+              What <span className="text-gradient">UK viewers</span> say
             </>
           }
           className="mb-10!"
         />
 
-        <div className="reveal mb-14 flex justify-center">
-          <div className="glass inline-flex items-center gap-6 rounded-2xl px-8 py-5">
-            <div className="flex items-end gap-1.5">
-              <span className="font-display text-5xl font-bold text-white">
-                <CountUp to={avgRating} decimals={1} />
-              </span>
-              <span className="mb-2 text-sm text-zinc-400">/ 5.0</span>
-            </div>
-            <div className="h-12 w-px bg-white/10" />
-            <div className="flex flex-col items-start gap-1.5">
-              <Stars count={5} />
-              <p className="text-sm text-zinc-400">
-                <span className="font-medium text-white">
-                  <CountUp to={totalReviews} />
-                </span>{" "}
-                verified reviews
-              </p>
-            </div>
-          </div>
-        </div>
+        <p className="reveal -mt-4 mb-14 text-center text-zinc-400">
+          Don&apos;t take their word for it —{" "}
+          <a href="#pricing" className="text-brand-300 underline underline-offset-4 hover:text-brand-200">
+            try it free for 3 hours
+          </a>
+          .
+        </p>
       </div>
 
       <div className="reveal flex flex-col gap-5">
@@ -160,9 +145,14 @@ export default function Testimonials() {
             <div
               className={`flex shrink-0 gap-5 pr-5 ${idx % 2 ? "animate-marquee-reverse" : "animate-marquee"} [animation-duration:60s]`}
             >
-              {[...row, ...row, ...row, ...row].map((r, i) => (
-                <ReviewCard key={`${r.name}-${i}`} r={r} />
+              {row.map((r) => (
+                <ReviewCard key={r.name} r={r} />
               ))}
+              <ClientClones count={3}>
+                {row.map((r) => (
+                  <ReviewCard key={r.name} r={r} />
+                ))}
+              </ClientClones>
             </div>
           </div>
         ))}

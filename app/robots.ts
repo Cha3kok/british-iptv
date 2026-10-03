@@ -23,7 +23,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/" },
       { userAgent: AI_CRAWLERS, allow: "/" },
     ],
-    sitemap: "https://iptv-british.com/sitemap.xml",
-    host: "https://iptv-british.com",
+    sitemap: "https://www.iptv-british.com/sitemap.xml",
   };
 }

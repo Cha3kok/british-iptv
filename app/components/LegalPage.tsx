@@ -3,6 +3,8 @@ import { ChevronLeft } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
+import JsonLd from "./JsonLd";
+import { SITE_URL } from "../lib/site";
 
 type Section = { heading: string; body: string | string[] };
 
@@ -12,11 +14,29 @@ type Props = {
   subtitle: string;
   lastUpdated: string;
   sections: Section[];
+  /** Route path, e.g. "/dmca" — used for structured data. */
+  path: string;
 };
 
-export default function LegalPage({ badge, title, subtitle, lastUpdated, sections }: Props) {
+export default function LegalPage({ badge, title, subtitle, lastUpdated, sections, path }: Props) {
+  const url = `${SITE_URL}${path}`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebPage", "@id": `${url}#webpage`, url, name: title, description: subtitle, inLanguage: "en-GB", isPartOf: { "@id": `${SITE_URL}/#website` } },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: title, item: url },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-ink-950 text-white">
+      <JsonLd data={schema} />
       <Navbar />
 
       <div className="bg-ink-900 border-b border-white/5 pt-24 pb-12">
@@ -58,7 +78,7 @@ export default function LegalPage({ badge, title, subtitle, lastUpdated, section
         <div className="pt-6 border-t border-white/5">
           <p className="text-zinc-500 text-sm">
             Questions about this policy? Contact us at{" "}
-            <a href="mailto:goldengateiptv@gmail.com" className="text-brand-400 hover:text-brand-300 transition-colors">
+            <a href="mailto:goldengateiptv@gmail.com" className="text-brand-300 underline underline-offset-2 hover:text-brand-200 transition-colors">
               goldengateiptv@gmail.com
             </a>
           </p>

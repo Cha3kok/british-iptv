@@ -14,12 +14,16 @@
   --color-brand-200: #bccdff;
   --color-brand-300: #8faaff;
   --color-brand-400: #6a8cff;
-  --color-brand-500: #4c6fff;
+  --color-brand-500: #4466ff;
   --color-brand-600: #3651f0;
   --color-brand-700: #2b3fcc;
   --color-brand-800: #2635a3;
   --color-brand-900: #232f7f;
   --color-brand-950: #161c4a;
+
+  /* Lifted greys for WCAG AA (4.5:1) small text on the navy surfaces */
+  --color-zinc-500: #9a9aa6;
+  --color-zinc-600: #8b8b96;
 
   --color-accent-300: #ff8fa3;
   --color-accent-400: #ff5c7a;

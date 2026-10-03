@@ -54,7 +54,11 @@ export default function IptvUkGuide() {
             <strong className="text-white">IPTV UK</strong> (Internet Protocol Television) is a way of watching live
             British TV channels, sport, films and box sets over your broadband connection instead of a satellite dish or
             cable box. You pay a monthly or yearly subscription, install an IPTV app on your Smart TV, Firestick or phone,
-            and stream everything in HD or 4K — with no contract and no engineer visit.
+            and stream everything in HD or 4K — with no contract and no engineer visit.{" "}
+            <Link href="/blog/what-is-iptv-complete-guide" className="text-brand-300 underline-offset-4 hover:underline">
+              Read the full beginner&apos;s guide to IPTV
+            </Link>
+            .
           </p>
           <p className="mt-4 leading-relaxed text-zinc-400">
             <strong className="text-zinc-200">British IPTV</strong> is a UK IPTV subscription with 50,000+ live channels
@@ -124,7 +128,11 @@ export default function IptvUkGuide() {
               <tbody>
                 {plans.map((p) => (
                   <tr key={p.plan} className="border-t border-white/5">
-                    <th scope="row" className="px-6 py-3 text-left font-medium text-zinc-200">{p.plan}</th>
+                    <th scope="row" className="px-6 py-3 text-left font-medium text-zinc-200">
+                      <Link href={`/product/${p.months}-month-british-iptv`} className="underline-offset-4 hover:text-white hover:underline">
+                        {p.plan}
+                      </Link>
+                    </th>
                     <td className="px-6 py-3 text-right font-semibold text-white">£{p.price}</td>
                     <td className="px-6 py-3 text-right text-brand-300">£{(p.price / p.months).toFixed(2)}</td>
                   </tr>
