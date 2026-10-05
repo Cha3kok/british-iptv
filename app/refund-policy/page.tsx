@@ -19,7 +19,7 @@ export default function RefundPolicy() {
       path="/refund-policy"
       title="Refund Policy"
       subtitle="We want you to be completely satisfied. Here's how our refund process works."
-      lastUpdated="1 January 2025"
+      lastUpdated="3 October 2026"
       sections={[
         {
           heading: "Free Trial First",

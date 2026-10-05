@@ -24,6 +24,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/best-iptv-app-firestick-2025",
+        destination: "/blog/best-iptv-apps-firestick",
+        permanent: true,
+      },
+      {
+        source: "/blog/iptv-setup-guide-smart-tv-2025",
+        destination: "/blog/iptv-setup-guide-smart-tv",
+        permanent: true,
+      },
+      {
         source: "/blog/watch-sky-sports-without-sky-subscription",
         destination: "/blog/watch-live-sports-without-satellite",
         permanent: true,

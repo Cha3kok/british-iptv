@@ -70,6 +70,7 @@ export default function BlogPage() {
       headline: post.title,
       url: `https://www.iptv-british.com/blog/${post.slug}`,
       datePublished: post.date,
+      dateModified: post.updated ?? post.date,
       description: post.excerpt,
     })),
   };
@@ -113,7 +114,9 @@ export default function BlogPage() {
           <p className="text-zinc-400 leading-relaxed mb-6 max-w-3xl">{featured.excerpt}</p>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 text-zinc-500 text-xs">
-              <span>{formatDate(featured.date)}</span>
+              <time dateTime={featured.updated ?? featured.date}>
+                {featured.updated ? `Updated ${formatDate(featured.updated)}` : formatDate(featured.date)}
+              </time>
               <span className="flex items-center gap-1">
                 <Clock size={11} /> {featured.readTime}
               </span>
@@ -143,7 +146,9 @@ export default function BlogPage() {
               </p>
               <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
                 <div className="flex items-center gap-3 text-zinc-500 text-xs">
-                  <span>{formatDate(post.date)}</span>
+                  <time dateTime={post.updated ?? post.date}>
+                    {post.updated ? `Updated ${formatDate(post.updated)}` : formatDate(post.date)}
+                  </time>
                   <span className="flex items-center gap-1">
                     <Clock size={11} /> {post.readTime}
                   </span>

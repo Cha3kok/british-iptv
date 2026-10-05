@@ -46,7 +46,12 @@ export function getAllPosts(): PostMeta[] {
         coverAlt: data.coverAlt as string | undefined,
       };
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    // Most recently updated first; original publish date breaks ties.
+    .sort(
+      (a, b) =>
+        new Date(b.updated ?? b.date).getTime() - new Date(a.updated ?? a.date).getTime() ||
+        new Date(b.date).getTime() - new Date(a.date).getTime(),
+    );
 }
 
 export function getPostBySlug(slug: string): PostWithContent | null {

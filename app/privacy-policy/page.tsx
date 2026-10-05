@@ -19,12 +19,12 @@ export default function PrivacyPolicy() {
       path="/privacy-policy"
       title="Privacy Policy"
       subtitle="How we collect, use, and protect your personal information."
-      lastUpdated="1 January 2025"
+      lastUpdated="5 October 2026"
       sections={[
         {
           heading: "1. Information We Collect",
           body: [
-            "Account information: name and email address when you register or contact us.",
+            "Contact information: your name, email address and WhatsApp phone number when you request a trial, subscribe or contact support.",
             "Payment information: processed securely through our payment providers. We do not store card details.",
             "Device and connection information: IP address, device type, and app version for troubleshooting.",
             "Usage data: channels viewed and connection logs, used to improve service quality.",
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
         },
         {
           heading: "3. Data Sharing",
-          body: "We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers who assist in operating our service (e.g. payment processors, hosting providers), under strict confidentiality agreements.",
+          body: "We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers who assist in operating our service (e.g. payment processors, hosting providers), under strict confidentiality agreements. When you message us on WhatsApp, your messages are also processed by WhatsApp (Meta) under its own privacy policy.",
         },
         {
           heading: "4. Data Retention",
@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
         },
         {
           heading: "5. Cookies",
-          body: "Our website uses essential cookies to function correctly, and optional analytics cookies to understand how visitors use our site. You can disable non-essential cookies in your browser settings.",
+          body: "Our website does not use advertising or analytics cookies and does not track you across other sites. Our hosting provider records basic technical information, such as IP addresses, in server logs to keep the site secure and working.",
         },
         {
           heading: "6. Your Rights (GDPR)",

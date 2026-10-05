@@ -19,7 +19,7 @@ export default function TermsOfService() {
       path="/terms-of-service"
       title="Terms of Service"
       subtitle="Please read these terms carefully before using our service."
-      lastUpdated="1 January 2025"
+      lastUpdated="5 October 2026"
       sections={[
         {
           heading: "1. Acceptance of Terms",
@@ -36,12 +36,13 @@ export default function TermsOfService() {
             "You may not resell, redistribute, or sublicense access to the service without written permission.",
             "You may not use the service to record, copy, or distribute copyrighted content.",
             "You may not share your account credentials with users outside your household.",
+            "Simultaneous streams are limited to the number of connections purchased (1 to 4).",
             "You may not attempt to circumvent any technical protection measures.",
           ],
         },
         {
           heading: "4. Subscriptions and Payment",
-          body: "Subscriptions are billed in advance for the chosen period (1, 3, or 12 months). All payments are non-refundable except as described in our Refund Policy. We reserve the right to change pricing with 30 days' notice.",
+          body: "Subscriptions are paid in advance for the chosen period (1, 3, 6, 12 or 24 months) and number of connections (1 to 4). There is no minimum contract. All payments are non-refundable except as described in our Refund Policy. We reserve the right to change pricing with 30 days' notice.",
         },
         {
           heading: "5. Service Availability",
@@ -53,7 +54,7 @@ export default function TermsOfService() {
         },
         {
           heading: "7. Intellectual Property",
-          body: "All content streamed through the service is owned by the respective broadcasters and rights holders. BritishIPTV makes no claim of ownership over third-party content. The BritishIPTV brand, logo, and website content are our intellectual property.",
+          body: "All content streamed through the service is owned by the respective broadcasters and rights holders. BritishIPTV makes no claim of ownership over third-party content. The BritishIPTV brand, logo, and website content are our intellectual property. Rights holders can report copyright concerns under our DMCA Policy.",
         },
         {
           heading: "8. Limitation of Liability",
