@@ -11,6 +11,7 @@ const links: Record<string, { label: string; href: string }[]> = {
     { label: "IPTV Subscription UK", href: "/blog/iptv-subscription-uk" },
     { label: "Blog", href: "/blog" },
     { label: "Setup Guide", href: "/setup" },
+    { label: "Is It Legit? 6 Checks", href: "/uk-iptv-legit-check" },
     { label: "Free Trial", href: "/#pricing" },
   ],
   Company: [

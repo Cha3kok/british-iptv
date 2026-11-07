@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/product`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/setup`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/uk-iptv-legit-check`, lastModified: new Date("2026-11-07"), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/privacy-policy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.4 },
