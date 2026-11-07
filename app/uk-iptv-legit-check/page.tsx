@@ -14,7 +14,7 @@ const URL = `${SITE_URL}/uk-iptv-legit-check`;
 const CHECKED = "7 November 2026";
 const title = "Is It Legit? 6 Checks on UK IPTV Providers (2026)";
 const description =
-  "IPTV Kingdom, BritCast, GB IPTV, BenTV Pro, Televo IPTV and IPTV United Kingdom put through six checks: refund window, trial, payment protection, consistent terms, connections, renewal.";
+  "Six checks on IPTV Kingdom, BritCast, GB IPTV, BenTV Pro, Televo IPTV and IPTV United Kingdom: refunds, trial, payment, terms, connections, renewal.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -83,8 +83,8 @@ const ROWS: Row[] = [
       { v: "Yes", note: "Full refund within 72 hours; refunds take 20 to 90 working days" },
       { v: "Yes", note: "4 hours" },
       { v: "Yes", note: "PayPal (cards through PayPal)" },
-      { v: "No", note: "Three price lists for the same plans (12 months £58, £96 or £140)" },
-      { v: "No", note: "Device tabs with no prices" },
+      { v: "No", note: "Refund page says no refunds after 72 hours, then says later requests are refunded partially" },
+      { v: "Yes", note: "1, 2 or 3 devices, priced separately (12 months £58 / £96 / £140)" },
       { v: "No", note: "Not stated" },
     ],
   },
@@ -126,7 +126,7 @@ const faq = [
   },
   {
     q: "Which provider passed the most checks?",
-    a: "Count the Yes answers in the table for yourself. A provider with an Unclear or No is not automatically bad: it means you should ask that question before you pay and keep the answer in writing.",
+    a: "Count the Yes answers in the results for yourself. A provider with an Unclear or No is not automatically bad: it means you should ask that question before you pay and keep the answer in writing.",
   },
 ];
 
@@ -181,7 +181,7 @@ export default function LegitCheckPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
         <p className="rounded-2xl border border-brand-400/30 bg-ink-800 p-5 text-zinc-300 leading-7">
           <strong className="text-white">Who wrote this:</strong> British IPTV and{" "}
-          <a href="https://iptvunitedkingdom.co/best-iptv-uk" className="text-brand-300 underline">IPTV United Kingdom</a> are run by the same team,
+          <a href="https://iptvunitedkingdom.co/iptv-united-kingdom" className="text-brand-300 underline">IPTV United Kingdom</a> are run by the same team,
           so read its row as the seller describing itself. We have not used the other services and give no ratings. Every answer is what the
           provider publishes.
         </p>
@@ -208,7 +208,7 @@ export default function LegitCheckPage() {
               <ul className="mt-4 space-y-3">
                 {r.checks.map((c, i) => (
                   <li key={CHECKS[i]} className="flex gap-3 text-sm leading-6">
-                    <span className={`shrink-0 h-fit rounded-full px-2.5 py-0.5 text-xs font-semibold ${badge(c.v)}`}>{c.v}</span>
+                    <span className={`shrink-0 h-fit min-w-[4.5rem] text-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${badge(c.v)}`}>{c.v}</span>
                     <span className="text-zinc-300">
                       <strong className="text-white">{CHECKS[i]}:</strong> {c.note}
                     </span>
@@ -254,7 +254,7 @@ export default function LegitCheckPage() {
 
         <p className="text-zinc-500 text-sm leading-6">
           Sources, read on {CHECKED}: iptvkingdom.net, britcast.co.uk, gbiptv.uk, bentvpro.uk and keviniptv.me (plans, free trial and refund
-          policy pages). Terms change, so check the provider&apos;s own site before you order.
+          policy pages). Each provider can change its terms at any time; confirm on its site on the day you pay.
         </p>
       </div>
 
